@@ -3,8 +3,12 @@ Ext.define('Presencha.view.PresoForm', {
     xtype: 'presoform',
     config: {
         layout: 'fit',
-        
         items: [
+            {
+                xtype: 'panel',
+                html: '<img class="vector" src="resources/images/logo.png">',
+                cls: 'mascott'
+            },
             {
                 xtype: 'toolbar',
                 title: 'Upload your slideshow',
