@@ -28,6 +28,16 @@ Ext.define('Presencha.controller.Main', {
           }
         });
         
+        var queryString = Ext.urlDecode(window.location.search.substring(1));
+        
+        if (!queryString.length){
+          // set active item 1 on viewport
+        }else{
+          // set active item 0 on viewport          
+        }
+        
+        
+        
         var slidestore = this.getSlideshowStore();
         slidestore.on({
           'load': this.addSlides,
