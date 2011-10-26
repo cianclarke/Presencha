@@ -15,6 +15,14 @@ Ext.define('Presencha.controller.Main', {
         {
             ref: 'htmlform',
             selector: '#htmlFormPanel'
+        },
+        {
+            ref: 'viewport',
+            selector: 'viewport'
+        },
+        {
+            ref: 'slideshowsummary',
+            selector: 'slideshowsummary'
         }
     ],
     
@@ -31,6 +39,11 @@ Ext.define('Presencha.controller.Main', {
         
     },
     
+    launch: function() {
+        window.vp = this.getViewport();
+        window.ss = this.getSlideshowsummary();
+    },
+    
     showSlides: function(){
         // handler functions here var list = this.getSlideList();
     },
@@ -40,12 +53,15 @@ Ext.define('Presencha.controller.Main', {
             url: 'http://api.presencha.com/slideshow',
             isUpload: true,
             method: 'POST',
+            scope: this,
             params: this.getPresoForm().down('formpanel').getValues(),
             success: function() {
-                debugger;
+                var vp = this.getViewport();
+                vp.setActiveItem(1);
             },
             failure: function() {
                 debugger;
+                console.log('Upload failed.')
             }
         })
     }
