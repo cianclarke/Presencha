@@ -1,33 +1,24 @@
 URL Endpoints:
 
-POST http://api.presencha.com/ -- create a new slideshow
-Response:
+POST http://api.presencha.com/slideshow -- create a new slideshow
+Response: (HTTP 201)
 {
-  success : true,
 	key : 'abcdefg01234567890',
 	secretKey : 'LKJGHOIWNVLKJDFUIYKTNVLJKSFIYGSLJJLKJDF'
 }
-Error response:
-{
-	success : false,
-	error : 'Something bad happened'
-}
+Error responses: HTTP 500 (generic error)
 
-GET http://api.presencha.com/<key> -- Get the Slideshow object with id of key
+GET http://api.presencha.com/slideshow/<key> -- Get the Slideshow object with id of key
 Response:
 {
 	key : 'abcdefg01234567890',
 	slideCount : 123
 }
-Error response: HTTP 404, etc
+Error response: HTTP 404
 
-GET http://api.presencha.com/<key>/<slideNumber> -- Get the Slide object for slideNumber
+GET http://api.presencha.com/slideshow/<key>/<slideNumber> -- Get the Slide object for slideNumber
 {
-	url : 'http://api.presencha.com/<key>/<slideNumber>/img'
+	url : 'http://entirely.up/to/you.jpeg'
 }
-Error response: HTTP 404, etc
+Error response: HTTP 404
 *The URL will be the master URL for the slide, and the Touch client will tranlate the image URL in to a Sencha.io src URL, i.e. "http://src(1|2|3).sencha.io/<Slide.url>"
-
-GET http://api.presencha.com/<key>/<slideNumber>/img -- Output the actual image (Content-type: image/jpeg)
-Response: jpeg image
-Error response: HTTP 404, etc
