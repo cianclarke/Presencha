@@ -1,6 +1,13 @@
-Ext.regApplication({
+Ext.Loader.setConfig({
+    enabled: true
+});
+
+Ext.application({
     name: 'Presencha',
+    
+    controllers: ['Main'],
+    
     launch: function() {
-      this.views.viewport = new this.views.Viewport();
+        Ext.create('Presencha.view.Viewport');
     }
 });
