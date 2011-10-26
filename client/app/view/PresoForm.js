@@ -24,7 +24,7 @@ Ext.define('Presencha.view.PresoForm', {
                             {
                                 xtype: 'fileuploadfield',
                                 label: 'PDF',
-                                name: 'pdf'
+                                name: 'slideshow'
                             }
                         ]
                     }
