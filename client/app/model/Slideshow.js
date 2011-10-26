@@ -1,4 +1,4 @@
-Ext.define("Presencha.models.Slideshow", {
+Ext.define("Presencha.model.Slideshow", {
     extend: "Ext.data.Model",
     fields: [
          {name: "id", type: "string"}, // unique ID of this presentation as per the API
@@ -14,9 +14,9 @@ Ext.define("Presencha.models.Slideshow", {
      } // TODO - guess the proxy sits on the SlideShow, and it reaches to our API?
 });
 
-
-Presencha.stores.slideshow = Ext.create('Ext.data.Store', {
-  model: "Presencha.models.Slideshow",
+Ext.define("Presencha.stores.slideshow", {
+  extend: "Ext.data.Store",
+  model: "Presencha.model.Slideshow",
   data: [
     {
       id: 'MyFirst',

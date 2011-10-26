@@ -1,5 +1,5 @@
 Ext.define('Presencha.view.Viewport', {
-    extend: 'Ext.Panel',
+    extend: 'Ext.Container',
     
     config: {
         fullscreen: true,
@@ -8,7 +8,7 @@ Ext.define('Presencha.view.Viewport', {
             { xtype: 'presoform'},
             {
                 xtype: 'slideshow',
-                html: ' ..'
+                
             }
         ]
     }

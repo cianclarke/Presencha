@@ -2,6 +2,7 @@ Ext.define('Presencha.controller.Main', {
     extend: 'Ext.app.Controller',
     
     views: ['Slideshow', 'PresoForm'],
+    models: ['Slide', 'Slideshow'],
     refs: [
         {
             ref: 'slideShow',

@@ -2,7 +2,7 @@
 AddDefaultCharset utf-8
 RewriteEngine on
 
-RewriteRule ^slideshow/(\d+)/(\d+)$ controller.php?mode=slide&key=$1&slide=$2[L,QSA]
-RewriteRule ^slideshow/(\d+)$ controller.php?mode=detail&key=$1 [L,QSA]
+RewriteRule ^slideshow/(.*)/(.*)$ controller.php?mode=slide&key=$1&slide=$2[L,QSA]
+RewriteRule ^slideshow/(.*)$ controller.php?mode=detail&key=$1 [L,QSA]
 RewriteRule ^slideshow$ controller.php?mode=upload [L,QSA]
 RewriteRule ^$ controller.php

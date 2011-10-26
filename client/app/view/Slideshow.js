@@ -1,8 +1,7 @@
 Ext.define('Presencha.view.Slideshow', {
-    extend: 'Ext.Panel', // TODO: Carousel?
+    extend: 'Ext.Carousel', // TODO: Carousel?
     id: 'slideShow',
     xtype: 'slideshow',
-    layout: 'card',
     config: {
         items: [ // TODO: Hardcoded for now
             {
