@@ -36,7 +36,7 @@ Ext.define('PresenchaMsg', {
 	/**
 	 * Are we the presenter?
 	 */
-	isPresenter : true,
+	isPresenter : false,
 	queue : null, //current queue
 	
 	constructor : function() {
@@ -76,7 +76,7 @@ Ext.define('PresenchaMsg', {
 	
 	getSlideUrl : function(url) {
 		var n = Math.ceil(Math.random() * 3);
-		return 'http://src' + n + '.sencha.io/' + url;
+		return 'http://src.sencha.io/' + url;
 	},
 	
 	stopSlideshow : function(callback, scope) {

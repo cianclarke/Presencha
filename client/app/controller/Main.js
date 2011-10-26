@@ -44,6 +44,9 @@ Ext.define('Presencha.controller.Main', {
         var queryString = Ext.urlDecode(window.location.search.substring(1));
         var url = "http://api.presencha.com/slideshow/" + queryString.key;
         
+        if(queryString.secretKey)
+        	PresenchaMsg.isPresenter = true;
+        
         var slidestore = this.getSlideshowStore();
         
         slidestore.on({
@@ -93,24 +96,23 @@ Ext.define('Presencha.controller.Main', {
       var title = record.get('title');
       
       for (var i=0; i<slides.length; i++){
-        slides[i].src = 'http://api.presencha.com' + slides[i].url;
+        slides[i].src = PresenchaMsg.getSlideUrl('http://api.presencha.com' + slides[i].url);
         slides[i].xtype = "image";
       }
-      debugger;
+    //  debugger;
      
-    car.setItems(slides, function(){
+    car.setItems(slides);
     
     if(PresenchaMsg.isPresenter) {
-    PresenchaMsg.startSlideshow(key);
+    PresenchaMsg.startSlideshow('test');
     }
     else {
-    	PresenchaMsg.joinSlideshow(key, function(from, message) {
-    	   var carousel = PresenchaMsg.carousel;
-       	c.setActiveItem(message.slideNumber);
+    	PresenchaMsg.joinSlideshow('test', function(from, message) {
+    	   var c = PresenchaMsg.carousel;
+       	c.setActiveItem(message.slideNumber-1);
    	});
     }
-    
-    });
+  
     }
 
 });
