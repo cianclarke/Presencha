@@ -93,6 +93,7 @@ Ext.define('Presencha.controller.Main', {
 
     addSlides: function(data, p2){
       var car = this.getSlideShow();
+      if (!p2) return;
       var record = p2[0];
       
       var slides = record.get('slides');
