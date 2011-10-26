@@ -94,9 +94,10 @@ Ext.define('Presencha.controller.Main', {
       var title = record.get('title');
       
       for (var i=0; i<slides.length; i++){
-        slides[i].src = PresenchaMsg.getUrl('http://api.presencha.com' + slides[i].url);
+        slides[i].src = 'http://api.presencha.com' + slides[i].url;
         slides[i].xtype = "image";
       }
+      debugger;
      
     car.setItems(slides);
     }
