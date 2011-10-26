@@ -12,6 +12,10 @@ Ext.define('Presencha.controller.Main', {
         {
             ref: 'presoForm',
             selector: 'presoform'
+        },
+        {
+          ref: 'viewport',
+          selector: 'viewport'
         }
     ],
     
@@ -29,11 +33,15 @@ Ext.define('Presencha.controller.Main', {
         });
         
         var queryString = Ext.urlDecode(window.location.search.substring(1));
-        
-        if (!queryString.length){
-          // set active item 1 on viewport
+        debugger;//FIXME: Setactiveitem not working
+        var vp = this.getViewport();
+        if (queryString.key){
+          // We want a slideshow
+          vp.setActiveItem(1);
+          
         }else{
-          // set active item 0 on viewport          
+          // We want a form upload
+          vp.setActiveItem(1);
         }
         
         
