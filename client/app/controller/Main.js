@@ -6,7 +6,7 @@ Ext.define('Presencha.controller.Main', {
     stores: ['Slideshow'],
     refs: [
         {
-            ref: 'SlideShow',
+            ref: 'slideShow',
             selector: '#slideShow'
         },
         {
@@ -27,17 +27,29 @@ Ext.define('Presencha.controller.Main', {
               // Form submission handler goes here
           }
         });
-        debugger;
+        
         var slidestore = this.getSlideshowStore();
         slidestore.on({
-          'load': this.addSlides
+          'load': this.addSlides,
+          scope: this
         });
         
-        
     },
-    addSlides: function(data){
-      debugger;
-      //this.getSlideshow().add
+    addSlides: function(data, p2){
+      var car = this.getSlideShow();
+      var record = p2[0];
+      
+      var slides = record.get('slides');
+      var title = record.get('title');
+      
+      for (var i=0; i<slides.length; i++){
+        slides[i].src = slides[i].url;
+        slides[i].xtype = "image";
+      }
+      
+      
+     
+//    car.setItems([{xtype: 'panel', html: 'test'}])
     }
 
 });
