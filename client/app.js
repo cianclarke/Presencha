@@ -36,7 +36,7 @@ Ext.define('PresenchaMsg', {
 	/**
 	 * Are we the presenter?
 	 */
-	isPresenter : false,
+	isPresenter : true,
 	queue : null, //current queue
 	
 	constructor : function() {
