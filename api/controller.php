@@ -49,7 +49,7 @@ switch ($_GET['mode']) {
                         </form>
                     </body>
                 </html>
-            <?
+            <?php
         }
         break;
 }
