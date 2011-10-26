@@ -12,7 +12,6 @@ Error responses: HTTP 500 (generic error)
 GET http://api.presencha.com/slideshow/<key> -- Get the Slideshow object with id of key
 Response:
 {
-	success: 'true',
 	key : 'abcdefg01234567890',
 	title : 'The Title',
 	slideCount : 123,
