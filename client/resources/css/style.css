@@ -104,6 +104,8 @@
 	text-align:center;
 	padding:15px 20px 15px 20px;
 	border:1px solid #ccc;
+	margin:0 auto !important;
+	text-align:left;
 }
 
 #slideshow label {
@@ -117,26 +119,29 @@
 	line-height:1.5em;
 	border-radius:0.2em;
 	border:2px solid #bbb;
-	width:90%;
 	margin:5px 0 5px 0;
 	padding: 0;
+	width:100%;
 }
 
 
 #slideshow ul {
 	position:relative; 
 	float:left;
+	width:100%;
 }
 
 #slideshow ul li {
 	margin:0 0 10px 0;
+	padding:0;
 	clear:both;
 	display:block;
 	float:left;
+	width:100%;
 }
 
 #slideshow ul li label {
-	float:left;
+	text-align:left;
 }
 
 .mascott {

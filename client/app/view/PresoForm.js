@@ -6,7 +6,6 @@ Ext.define('Presencha.view.PresoForm', {
             type: 'vbox',
             pack: 'top'
         },
-        scroll: 'vertical',
         items: [
             {
                 xtype: 'panel',
@@ -30,12 +29,12 @@ Ext.define('Presencha.view.PresoForm', {
                     ' enctype="multipart/form-data"',
                     ' method="POST">',
                     '<fieldset>',
-                    '  <ul><li><label>Title</label></li>',
-                    '    <li><input type="text" name="title" class="title">',
-                    '  </li>',
-                    '  <li><label>PDF</label></li>',
-                    '    <input type="file" name="slides">',
-                    '  </li></ul>',
+                    '  <ul>',
+                    '     <li><label>Presentation Title</label></li>',
+                    '     <li><input type="text" name="title" class="title"></li>',
+                    '     <li><label>PDF</label></li>',
+                    '     <li><input type="file" name="slides"></li>',
+                    '  </ul>',
                     '</fieldset>',
                     '</form>',
                   ].join(" ")
