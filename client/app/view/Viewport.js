@@ -5,7 +5,6 @@ Ext.define('Presencha.view.Viewport', {
         layout: 'card',
         items: [
             { xtype: 'presoform' },
-            { xtype: 'slideshowsummary' },
             { xtype: 'slideshow' }
         ]
     }
