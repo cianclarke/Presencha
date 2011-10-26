@@ -2,7 +2,7 @@ Ext.define("Presencha.store.Slideshow", {
   extend: "Ext.data.Store",
   model: "Presencha.model.Slideshow",
   autoLoad: true,
-  data: [
+  /*data: [
     {
       id: 'MyFirst',
       name: 'My First Slideshow',
@@ -16,5 +16,5 @@ Ext.define("Presencha.store.Slideshow", {
           }
       ]
     }
-  ]
+  ]*/
 });

@@ -1,17 +1,21 @@
 Ext.define('Presencha.controller.Main', {
     extend: 'Ext.app.Controller',
     
-    views: ['Slideshow', 'PresoForm'],
+    views: ['PresoForm', 'Slideshow'],
     models: ['Slide', 'Slideshow'],
     stores: ['Slideshow'],
     refs: [
         {
-            ref: 'SlideShow',
+            ref: 'slideShow',
             selector: '#slideShow'
         },
         {
             ref: 'presoForm',
             selector: 'presoform'
+        },
+        {
+          ref: 'viewport',
+          selector: 'viewport'
         }
     ],
     
@@ -27,17 +31,43 @@ Ext.define('Presencha.controller.Main', {
               // Form submission handler goes here
           }
         });
-        debugger;
+        
+        var queryString = Ext.urlDecode(window.location.search.substring(1));
+        debugger;//FIXME: Setactiveitem not working
+        var vp = this.getViewport();
+        if (queryString.key){
+          // We want a slideshow
+          vp.setActiveItem(1);
+          
+        }else{
+          // We want a form upload
+          vp.setActiveItem(1);
+        }
+        
+        
+        
         var slidestore = this.getSlideshowStore();
         slidestore.on({
-          'load': this.addSlides
+          'load': this.addSlides,
+          scope: this
         });
         
-        
     },
-    addSlides: function(data){
-      debugger;
-      //this.getSlideshow().add
+    addSlides: function(data, p2){
+      var car = this.getSlideShow();
+      var record = p2[0];
+      
+      var slides = record.get('slides');
+      var title = record.get('title');
+      
+      for (var i=0; i<slides.length; i++){
+        slides[i].src = slides[i].url;
+        slides[i].xtype = "image";
+      }
+      
+      
+     
+    car.setItems(slides);
     }
 
 });

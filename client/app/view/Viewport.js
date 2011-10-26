@@ -7,8 +7,8 @@ Ext.define('Presencha.view.Viewport', {
             { xtype: 'presoform'},
             {
                 xtype: 'slideshow'
-                
             }
+            
         ]
     }
 });

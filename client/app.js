@@ -19,6 +19,7 @@ Ext.application({
         Ext.io.init();
         
 		//test code
+        //alert(PresenchaMsg.getSlideUrl('http://lorempixel.com/400/200'));
         /*PresenchaMsg.startSlideshow('test-id', function() {
         	PresenchaMsg.joinSlideshow('test-id', function(from, message) {
         		alert(JSON.stringify(message));
@@ -70,6 +71,11 @@ Ext.define('PresenchaMsg', {
         	
         	if(onSetup) callback(onSetup);
 		});
+	},
+	
+	getSlideUrl : function(url) {
+		var n = Math.ceil(Math.random() * 3);
+		return 'http://src' + n + '.sencha.io/' + url;
 	},
 	
 	stopSlideshow : function(callback, scope) {
