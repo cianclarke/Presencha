@@ -4,31 +4,42 @@ Ext.define('Presencha.view.PresoForm', {
     config: {
         layout: {
             type: 'vbox',
-            pack: 'center'
+            pack: 'top'
         },
-        
+        scroll: 'vertical',
         items: [
+            {
+                xtype: 'panel',
+                html: '<img class="vector" src="resources/images/logo.png">',
+                cls: 'mascott'
+            },
             {
                 xtype: 'toolbar',
                 title: 'Upload your slideshow',
                 docked: 'top'
             },
             {
-                html: [
-                  '<form id="slideshow"',
-                  ' action="http://api.presencha.com/slideshow"',
-                  ' enctype="multipart/form-data"',
-                  ' method="POST">',
-                  '<fieldset>',
-                  '  <label>Title:',
-                  '    <input type="text" name="title">',
-                  '  </label><br/>',
-                  '  <label>PDF:',
-                  '    <input type="file" name="slides">',
-                  '  </label>',
-                  '</fieldset>',
-                  '</form>',
-                ].join(" ")
+                xtype: 'panel',
+                pack: 'center',
+                type: 'hbox',
+                align: 'stretch',
+                items: {  
+                  html: [
+                    '<form id="slideshow"',
+                    ' action="http://api.presencha.com/slideshow"',
+                    ' enctype="multipart/form-data"',
+                    ' method="POST">',
+                    '<fieldset>',
+                    '  <ul><li><label>Title</label></li>',
+                    '    <li><input type="text" name="title" class="title">',
+                    '  </li>',
+                    '  <li><label>PDF</label></li>',
+                    '    <input type="file" name="slides">',
+                    '  </li></ul>',
+                    '</fieldset>',
+                    '</form>',
+                  ].join(" ")
+                }
             },
             {
                 xtype: 'toolbar',
@@ -37,7 +48,7 @@ Ext.define('Presencha.view.PresoForm', {
                     { xtype: 'spacer' },
                     {
                         text: 'submit',
-                        ui: 'confirm'
+                        cls: 'green'
                     },
                     { xtype: 'spacer' }
                 ] 
