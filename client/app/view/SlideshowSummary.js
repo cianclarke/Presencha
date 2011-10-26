@@ -4,10 +4,10 @@ Ext.define('Presencha.view.SlideshowSummary', {
     config: {
         layout: 'fit',
         html: 'asdfasd',
-        // tpl: [
-        //     '<h1>Find your form here</h1>',
-        //     '<p>Public: http://presencha.com/{key}</p>',
-        //     '<p>Presenter: http://presencha.com/{key}/{secretkey}</p>',
-        // ]
+        tpl: [
+            '<h1>Find your form here</h1>',
+            '<p>Public: http://presencha.com/{key}</p>',
+            '<p>Presenter: http://presencha.com/{key}/{secretkey}</p>',
+        ]
     }
 });

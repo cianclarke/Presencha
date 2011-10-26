@@ -4,7 +4,7 @@ RewriteEngine on
 RewriteRule ^slideshow/(.+)$ /slides/$1/meta.json [L]
 RewriteRule ^slideshow$ upload.php [L]
 
-Header set Access-Control-Allow-Methods: "GET, POST"
+Header set Access-Control-Allow-Methods: "GET, POST, OPTIONS"
 Header set Access-Control-Allow-Origin "*"
 Header set Access-Control-Allow-Headers "X-Requested-With, Content-Type, Content-Length"
 Header set Access-Control-Max-Age "86400"
