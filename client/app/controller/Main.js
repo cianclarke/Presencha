@@ -14,8 +14,8 @@ Ext.define('Presencha.controller.Main', {
             selector: 'presoform'
         },
         {
-          ref: 'viewport',
-          selector: 'viewport'
+            ref: 'viewport',
+            selector: 'viewport'
         }
     ],
     
@@ -33,15 +33,17 @@ Ext.define('Presencha.controller.Main', {
         });
         
         var queryString = Ext.urlDecode(window.location.search.substring(1));
-        debugger;//FIXME: Setactiveitem not working
+        
         var vp = this.getViewport();
         if (queryString.key){
           // We want a slideshow
-          vp.setActiveItem(1);
-          
+          vp.add({
+            xtype: 'slideshow'
+          });
+          this.getSlideshowStore().load();
         }else{
           // We want a form upload
-          vp.setActiveItem(1);
+          vp.setActiveItem(0);
         }
         
         
@@ -65,7 +67,7 @@ Ext.define('Presencha.controller.Main', {
         slides[i].xtype = "image";
       }
       
-      
+      this.getViewport().setActiveItem(1);
      
     car.setItems(slides);
     }
