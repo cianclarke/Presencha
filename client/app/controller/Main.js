@@ -57,7 +57,6 @@ Ext.define('Presencha.controller.Main', {
         
         
         
-        
     },
     
     showSlides: function(){
