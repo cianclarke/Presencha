@@ -3,4 +3,4 @@ RewriteEngine on
 
 RewriteRule ^([^/]+)/([0-9a-zA-Z]+)$ index.html?key=$1&secretKey=$2 [L,QSA]
 RewriteRule ^([0-9a-zA-Z]+)$ index.html?key=$1 [L,QSA]
-RewriteRule ^$ slideshow.html
+RewriteRule ^$ index.html
