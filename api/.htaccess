@@ -1,8 +1,10 @@
-
 AddDefaultCharset utf-8
-RewriteEngine on
 
-RewriteRule ^slideshow/(.*)/(.*)$ controller.php?mode=slide&key=$1&slide=$2[L,QSA]
-RewriteRule ^slideshow/(.*)$ controller.php?mode=detail&key=$1 [L,QSA]
-RewriteRule ^slideshow$ controller.php?mode=upload [L,QSA]
-RewriteRule ^$ controller.php
+RewriteEngine on
+RewriteRule ^slideshow/(.+)$ /slides/$1/meta.json [L]
+RewriteRule ^slideshow$ upload.php [L]
+
+Header set Access-Control-Allow-Methods: "GET, POST"
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Headers "X-Requested-With, Content-Type, Content-Length"
+Header set Access-Control-Max-Age "86400"
