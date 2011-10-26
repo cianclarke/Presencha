@@ -28,7 +28,8 @@ switch ($_GET['mode']) {
         break;
     // upload a new slideshow
     case 'upload':
-        if (isset($_POST) && !empty($_POST)) {
+        var_dump($_FILES);
+        if (isset($_FILES['slideshow']) && !empty($_FILES['slideshow'])) {
             $response = array(
                 'key' => 'abcdefg01234567890',
                 'secretKey' => 'LKJGHOIWNVLKJDFUIYKTNVLJKSFIYGSLJJLKJDF'
@@ -42,7 +43,7 @@ switch ($_GET['mode']) {
                         <title>Upload a slideshow</title>
                     </head>
                     <body>
-                        <form method="post" enctype="application/x-www-form-urlencoded">
+                        <form method="POST" enctype="application/x-www-form-urlencoded">
                             <input type="file" name="slideshow">
                             <input type="submit" name="Upload">
                         </form>
