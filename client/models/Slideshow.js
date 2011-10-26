@@ -14,5 +14,20 @@ Presencha.models.Slideshow = Ext.regModel("Presencha.models.Slideshow", {
 });
 
 Presencha.stores.slideshow = new Ext.data.Store({
-  model: "Presencha.models.Slideshow"
+  model: "Presencha.models.Slideshow",
+  data: [
+    {
+      id: 'MyFirst',
+      name: 'My First Slideshow',
+      audio: 'http://www.presencha.com/MyFirst/audio.mp3',
+      slides: [
+          {
+            image: 'http://www.presencha.com/MyFirst/1.png'
+          },
+          {
+            image: 'http://www.presencha.com/MyFirst/2.png'
+          }
+      ]
+    }
+  ]
 });
