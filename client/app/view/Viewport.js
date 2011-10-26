@@ -5,11 +5,9 @@ Ext.define('Presencha.view.Viewport', {
         fullscreen: true,
         layout: 'card',
         items: [
-            { xtype: 'presoform'},
-            {
-                xtype: 'slideshow',
-                
-            }
+            { xtype: 'presoform' },
+            { xtype: 'slideshowsummary' },
+            { xtype: 'slideshow' }
         ]
     }
 });

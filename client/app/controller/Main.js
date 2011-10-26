@@ -1,7 +1,7 @@
 Ext.define('Presencha.controller.Main', {
     extend: 'Ext.app.Controller',
     
-    views: ['Slideshow', 'PresoForm', 'FileUploadField'],
+    views: ['Slideshow', 'PresoForm', 'FileUploadField', 'SlideshowSummary'],
     models: ['Slide', 'Slideshow'],
     refs: [
         {
