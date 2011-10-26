@@ -43,6 +43,7 @@ switch ($_GET['mode']) {
     case 'upload':
         if (isset($_FILES['slideshow']) && !empty($_FILES['slideshow'])) {
             $response = array(
+				'success' => true,
                 'key' => 'abcdefg01234567890',
                 'secretKey' => 'LKJGHOIWNVLKJDFUIYKTNVLJKSFIYGSLJJLKJDF'
             );

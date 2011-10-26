@@ -3,6 +3,6 @@ Ext.define('Presencha.view.Slideshow', {
     id: 'slideShow',
     xtype: 'slideshow',
     config: {
-      
+      items: [{html: 'defaultItemHack'}]
     }
 });
