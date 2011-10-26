@@ -3,6 +3,7 @@ URL Endpoints:
 POST http://api.presencha.com/slideshow -- create a new slideshow
 Response: (HTTP 201)
 {
+	success: 'true',
 	key : 'abcdefg01234567890',
 	secretKey : 'LKJGHOIWNVLKJDFUIYKTNVLJKSFIYGSLJJLKJDF'
 }
@@ -11,6 +12,7 @@ Error responses: HTTP 500 (generic error)
 GET http://api.presencha.com/slideshow/<key> -- Get the Slideshow object with id of key
 Response:
 {
+	success: 'true',
 	key : 'abcdefg01234567890',
 	title : 'The Title',
 	slideCount : 123,
