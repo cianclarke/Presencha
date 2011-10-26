@@ -1,12 +1,13 @@
 Ext.define('Presencha.view.Viewport', {
-    extend: 'Ext.Panel',
+    extend: 'Ext.Container',
     
     config: {
         fullscreen: true,
+        layout: 'fit',
         items: [
             {
                 xtype: 'slideshow',
-                html: ' ..'
+                
             }
         ]
     }
