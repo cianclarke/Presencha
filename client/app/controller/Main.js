@@ -63,11 +63,6 @@ Ext.define('Presencha.controller.Main', {
         
     },
     
-    launch: function() {
-        window.vp = this.getViewport();
-        window.ss = this.getSlideshowsummary();
-    },
-    
     showSlides: function(){
         // handler functions here var list = this.getSlideList();
     },
