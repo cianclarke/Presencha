@@ -39,6 +39,7 @@ Ext.define('Presencha.controller.Main', {
         Ext.Ajax.request({
             url: 'http://api.presencha.com/slideshow',
             isUpload: true,
+            method: 'POST',
             params: this.getPresoForm().down('formpanel').getValues(),
             success: function() {
                 debugger;

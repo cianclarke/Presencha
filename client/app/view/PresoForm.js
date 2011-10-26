@@ -18,7 +18,7 @@ Ext.define('Presencha.view.PresoForm', {
                         items: [
                             {
                                 xtype: 'textfield',
-                                label: 'title',
+                                label: 'Title',
                                 name: 'title'
                             },
                             {
