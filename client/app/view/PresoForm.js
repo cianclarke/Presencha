@@ -30,24 +30,6 @@ Ext.define('Presencha.view.PresoForm', {
                     }
                 ]
             },
-            // {
-            //     id: 'htmlFormPanel',
-            //     html: [
-            //       '<form id="slideshowForm"',
-            //       ' action="http://api.presencha.com/slideshow"',
-            //       ' enctype="multipart/form-data"',
-            //       ' method="POST">',
-            //       '<fieldset>',
-            //       '  <label>Title:',
-            //       '    <input type="text" name="title">',
-            //       '  </label><br/>',
-            //       '  <label>PDF:',
-            //       '    <input type="file" name="slides">',
-            //       '  </label>',
-            //       '</fieldset>',
-            //       '</form>',
-            //     ].join(" ")
-            // },
             {
                 xtype: 'toolbar',
                 docked: 'bottom',

@@ -47,9 +47,5 @@ Ext.define('Presencha.controller.Main', {
                 debugger;
             }
         })
-        // debugger;
-        // var htmlform = this.getHtmlform();
-        // var form = document.getElementById("slideshowForm");
-        // form.submit();
     }
 });
