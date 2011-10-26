@@ -64,7 +64,7 @@ class manager
 
         for ($page=0; $page < $pages; $page++) {
             $imageName = $this->convertImage($fileName, $page, $slideshowPath);
-            $meta['slides'][] = array('url' => $imageName);
+            $meta['slides'][] = array('url' => '/slides/'.$meta['key'].'/'.$imageName);
         }
 
         return $meta;
@@ -82,7 +82,7 @@ class manager
         $imageName = $slideshowPath. '/slide'. ($page + 1) . '.png';
         $im->writeImage($imageName);
 
-        return $imageName;
+        return 'slide'. ($page + 1) . '.png';
     }
 }
 
@@ -91,7 +91,7 @@ class manager
         
 if (isset($_POST) && !empty($_POST)) {
     $manager = new Manager();
-    echo $manager->upload('temp/Presencha.pdf', $_POST['title']);
+    echo $manager->upload($_FILES['slideshow']['tmp_name'], $_POST['title']);
 } else {
     header('Content-type: text/html');
     ?><!doctype html>
