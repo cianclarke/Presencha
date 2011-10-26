@@ -22,7 +22,7 @@ class manager
         $pageCount = $this->getPageCount($fileName);
 
         $meta['slideCount'] = $pageCount;
-        $meta['tite'] = $title;
+        $meta['title'] = $title;
 
         $meta = $this->convertPdfToImages($fileName, $pageCount, $meta);
         $metaFile = $this->writeMetaFile($meta);
