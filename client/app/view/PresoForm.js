@@ -41,7 +41,7 @@ Ext.define('Presencha.view.PresoForm', {
                     { xtype: 'spacer' },
                     {
                         text: 'submit',
-                        ui: 'confirm',
+                        cls: 'green',
                         id: 'presentationUploadButton'
                     },
                     { xtype: 'spacer' }
