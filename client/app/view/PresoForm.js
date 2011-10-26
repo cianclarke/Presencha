@@ -2,33 +2,37 @@ Ext.define('Presencha.view.PresoForm', {
     extend: 'Ext.Panel',
     xtype: 'presoform',
     config: {
-        layout: {
-            type: 'vbox',
-            pack: 'center'
-        },
-        
+        layout: 'fit',
         items: [
+            {
+                xtype: 'panel',
+                html: '<img class="vector" src="resources/images/logo.png">',
+                cls: 'mascott'
+            },
             {
                 xtype: 'toolbar',
                 title: 'Upload your slideshow',
                 docked: 'top'
             },
             {
-                html: [
-                  '<form id="slideshow"',
-                  ' action="http://api.presencha.com/slideshow"',
-                  ' enctype="multipart/form-data"',
-                  ' method="POST">',
-                  '<fieldset>',
-                  '  <label>Title:',
-                  '    <input type="text" name="title">',
-                  '  </label><br/>',
-                  '  <label>PDF:',
-                  '    <input type="file" name="slides">',
-                  '  </label>',
-                  '</fieldset>',
-                  '</form>',
-                ].join(" ")
+                xtype: 'formpanel',
+                items: [
+                    {
+                        xtype: 'fieldset',
+                        items: [
+                            {
+                                xtype: 'textfield',
+                                label: 'Title',
+                                name: 'title'
+                            },
+                            {
+                                xtype: 'fileuploadfield',
+                                label: 'PDF',
+                                name: 'slideshow'
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 xtype: 'toolbar',
@@ -37,7 +41,8 @@ Ext.define('Presencha.view.PresoForm', {
                     { xtype: 'spacer' },
                     {
                         text: 'submit',
-                        ui: 'confirm'
+                        ui: 'confirm',
+                        id: 'presentationUploadButton'
                     },
                     { xtype: 'spacer' }
                 ] 
