@@ -1,6 +1,6 @@
 AddDefaultCharset utf-8
 RewriteEngine on
 
-#RewriteRule ^slideshow/([^/])/$ controller.php?mode=detail&key=$1 [L,QSA]
-RewriteRule ^.+$ index.html#$1 [L,QSA]
+RewriteRule ^([^/]+)/([0-9a-zA-Z]+)$ index.html?key=$1&secretKey=$2 [L,QSA]
+RewriteRule ^([0-9a-zA-Z]+)$ index.html?key=$1 [L,QSA]
 RewriteRule ^$ slideshow.html
