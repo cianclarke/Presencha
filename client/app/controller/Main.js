@@ -1,7 +1,7 @@
 Ext.define('Presencha.controller.Main', {
     extend: 'Ext.app.Controller',
     
-    views: ['Slideshow', 'PresoForm'],
+    views: ['Slideshow', 'PresoForm', 'FileUploadField'],
     models: ['Slide', 'Slideshow'],
     refs: [
         {
@@ -11,6 +11,10 @@ Ext.define('Presencha.controller.Main', {
         {
             ref: 'presoForm',
             selector: 'presoform'
+        },
+        {
+            ref: 'htmlform',
+            selector: '#htmlFormPanel'
         }
     ],
     
@@ -19,8 +23,9 @@ Ext.define('Presencha.controller.Main', {
           'slideshow' : {
               // Handlers here.. select: this.showSlides, 
           },
-          'presoform': {
+          '#presentationUploadButton': {
               // Form submission handler goes here
+              tap: this.onUploadTap
           }
         });
         
@@ -28,5 +33,23 @@ Ext.define('Presencha.controller.Main', {
     
     showSlides: function(){
         // handler functions here var list = this.getSlideList();
-    }    
+    },
+    
+    onUploadTap: function() {
+        Ext.Ajax.request({
+            url: 'http://api.presencha.com/slideshow',
+            isUpload: true,
+            params: this.getPresoForm().down('formpanel').getValues(),
+            success: function() {
+                debugger;
+            },
+            failure: function() {
+                debugger;
+            }
+        })
+        // debugger;
+        // var htmlform = this.getHtmlform();
+        // var form = document.getElementById("slideshowForm");
+        // form.submit();
+    }
 });
