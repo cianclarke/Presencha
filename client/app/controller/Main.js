@@ -1,11 +1,15 @@
 Ext.define('Presencha.controller.Main', {
     extend: 'Ext.app.Controller',
     
-    views: ['Slideshow'],
+    views: ['Slideshow', 'PresoForm'],
     refs: [
         {
             ref: 'slideShow',
             selector: '#slideShow'
+        },
+        {
+            ref: 'presoForm',
+            selector: 'presoform'
         }
     ],
     
@@ -13,6 +17,9 @@ Ext.define('Presencha.controller.Main', {
         this.control({
           'slideshow' : {
               // Handlers here.. select: this.showSlides, 
+          },
+          'presoform': {
+              // Form submission handler goes here
           }
         });
         

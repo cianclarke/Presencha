@@ -3,7 +3,9 @@ Ext.define('Presencha.view.Viewport', {
     
     config: {
         fullscreen: true,
+        layout: 'card',
         items: [
+            { xtype: 'presoform'},
             {
                 xtype: 'slideshow',
                 html: ' ..'
