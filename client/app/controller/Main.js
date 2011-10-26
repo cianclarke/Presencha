@@ -3,23 +3,34 @@ Ext.define('Presencha.controller.Main', {
     
     views: ['Slideshow'],
     models: ['Slide', 'Slideshow'],
+    stores: ['Slideshow'],
     refs: [
         {
-            ref: 'slideShow',
-            selector: '#slideShow'
+            ref: 'Slideshow',
+            selector: 'slideShow'
         }
     ],
     
-    init: function() {
+    launch: function() {
+      // TODO: Use routing to determine the API call we need to make
+      // Set the proxy url of our slideshow store to this
+        
         this.control({
           'slideshow' : {
-              // Handlers here.. select: this.showSlides, 
           }
         });
+        debugger;
+        var slidestore = this.getSlideshowStore();
+        slidestore.on({
+          'load': this.addSlides
+        });
+        
         
     },
-    
-    showSlides: function(){
-        // handler functions here var list = this.getSlideList();
-    }    
+    addSlides: function(data){
+      debugger;
+      //this.getSlideshow().add
+    }
+
 });
+
