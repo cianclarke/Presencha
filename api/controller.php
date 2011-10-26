@@ -4,6 +4,14 @@ $slideshowFolder = dirname(__FILE__) . '/slides';
 
 /** a damn wrong and filthy implementation of a controller, just for hacking purposes */
 header('Content-type: application/json');
+//PETER Added to work around problem testing in Safari.. need to figure out if this is necessary in general or just for development
+// Specify domains from which requests are allowed
+header('Access-Control-Allow-Origin: *');
+// Specify which request methods are allowed
+header('Access-Control-Allow-Methods: GET, POST'); //, PUT, DELETE, OPTIONS
+// Additional headers which may be sent along with the CORS request
+// The X-Requested-With header allows jQuery requests to go through
+header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Content-Length');
 
 switch ($_GET['mode']) {
     
