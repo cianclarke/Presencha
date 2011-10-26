@@ -42,30 +42,29 @@ Ext.define('Presencha.controller.Main', {
         });
         
         var queryString = Ext.urlDecode(window.location.search.substring(1));
-        debugger;//FIXME: Setactiveitem not working
-        var vp = this.getViewport();
-        if (queryString.key){
-          // We want a slideshow
-          vp.setActiveItem(1);
-          
-        }else{
-          // We want a form upload
-          vp.setActiveItem(1);
-        }
-        
-        
-        
+        debugger;
         var slidestore = this.getSlideshowStore();
         slidestore.on({
           'load': this.addSlides,
           scope: this
         });
         
-    },
-    
-    launch: function() {
-        window.vp = this.getViewport();
-        window.ss = this.getSlideshowsummary();
+        var vp = this.getViewport();
+        if (queryString.key){
+          // We want a slideshow
+          vp.add({
+            xtype: 'slideshow'
+          });
+          this.getSlideshowStore().load();
+        }else{
+          // We want a form upload
+          vp.setActiveItem(0);
+        }
+        
+        
+        
+        
+        
     },
     
     showSlides: function(){
@@ -81,7 +80,9 @@ Ext.define('Presencha.controller.Main', {
             params: this.getPresoForm().down('formpanel').getValues(),
             success: function() {
                 var vp = this.getViewport();
-                vp.setActiveItem(1);
+                vp.removeAll();
+                vp.add({ xtype: 'slideshowsummary' });
+                
             },
             failure: function() {
                 debugger;
@@ -92,6 +93,7 @@ Ext.define('Presencha.controller.Main', {
 
     addSlides: function(data, p2){
       var car = this.getSlideShow();
+      if (!p2) return;
       var record = p2[0];
       
       var slides = record.get('slides');
@@ -102,7 +104,7 @@ Ext.define('Presencha.controller.Main', {
         slides[i].xtype = "image";
       }
       
-      
+      this.getViewport().setActiveItem(1);
      
     car.setItems(slides);
     }
