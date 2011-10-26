@@ -164,8 +164,8 @@
 
 img.vector {
 	width: 100%;
-	max-width: 100%;
-	height: auto!important;
+	max-width: 70%;
+	height: auto !important;
 	padding: 20px;
 	max-width: 350px;
 }
