@@ -5,62 +5,47 @@
  * @var {color} $form-bg-color
  * Default background-color for forms.
  *
- * @member Ext.form.FormPanel
- * @xtype form
+ * @member Ext.form.Panel
  */
 $form-bg-color: #eee !default;
 
 /**
+ * @class Ext.field.Field
+ */
+
+/**
  * @var {color} $form-field-bg-color
  * Default background-color for form fields.
- *
- * @member Ext.form.Field
- * @xtype field
  */
 $form-field-bg-color: #fff !default;
 
 /**
  * @var {color} $form-light
  * Light color for form fields, mostly used on field borders.
- *
- * @member Ext.form.Field
- * @xtype field
  */
 $form-light: #ddd !default;
 
 /**
  * @var {color} $form-dark
  * Dark color for form fields, mostly used on labels/text.
- *
- * @member Ext.form.Field
- * @xtype field
  */
 $form-dark: #333 !default;
 
 /**
  * @var {measurement} $form-label-width
  * Default width for form labels.
- *
- * @member Ext.form.Field
- * @xtype field
  */
 $form-label-width: 6em !default;
 
 /**
  * @var {measurement} $form-field-height
  * Default height for form fields.
- *
- * @member Ext.form.Field
- * @xtype field
  */
 $form-field-height: 2.5em !default;
 
 /**
  * @var {measurement} $form-spacing
  * Default spacing for form fields, used for padding, etc.
- *
- * @member Ext.form.Field
- * @xtype field
  */
 $form-spacing: .6em !default;
 
@@ -68,8 +53,7 @@ $form-spacing: .6em !default;
  * @var {measurement} $form-textarea-height
  * Default height for form textareas.
  *
- * @member Ext.form.TextArea
- * @xtype textareafield
+ * @member Ext.field.TextArea
  */
 $form-textarea-height: 6em !default;
 
@@ -77,8 +61,7 @@ $form-textarea-height: 6em !default;
  * @var {measurement} $form-thumb-size
  * Default size of "thumbs" for form sliders/toggles.
  *
- * @member Ext.form.Slider
- * @xtype sliderfield
+ * @member Ext.field.Slider
  */
 $form-thumb-size: 2.2em !default;
 
@@ -86,8 +69,7 @@ $form-thumb-size: 2.2em !default;
  * @var {measurement} $form-toggle-size
  * Thumb size minus padding for inset thumbs like in a Toggle element.
  *
- * @member Ext.form.Toggle
- * @xtype togglefield
+ * @member Ext.field.Toggle
  */
 $form-toggle-size: $form-thumb-size - .35em;
 
@@ -96,7 +78,6 @@ $form-toggle-size: $form-thumb-size - .35em;
  * Default border-radius for form fieldsets.
  *
  * @member Ext.form.FieldSet
- * @xtype fieldset
  */
 $form-fieldset-radius: .4em !default;
 
@@ -104,16 +85,15 @@ $form-fieldset-radius: .4em !default;
  * @var {measurement} $form-slider-size
  * Height of the slider "track."
  *
- * @member Ext.form.Slider
- * @xtype sliderfield
+ * @member Ext.field.Slider
  */
 $form-slider-size: .8em !default;
 
 // Private utility vars & mixins
 
 $form-thumb-space: ( $form-thumb-size - $form-toggle-size ) / 2;
-$form-input-fields: '.x-input-text, .x-input, .x-input-number, .x-spinner-body, .x-input-radio, .x-input-checkbox, .x-input-email, .x-input-url, .x-input-password, .x-input-slider';
-$form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .x-field-radio';
+$form-input-fields: '.x-field-text, .x-input-text, .x-input, .x-input-number, .x-spinner-body, .x-input-radio, .x-input-checkbox, .x-input-email, .x-input-url, .x-input-password, .x-input-slider';
+$form-scrollable-fields: '.x-field-slider, .x-field-toggle';
 
 @mixin label {
   text-shadow: #fff 0 1px 1px;
@@ -128,9 +108,9 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
 /**
  * Includes default form styles.
  *
- * @member Ext.form.FormPanel
- * @xtype button
- * @see background-gradient
+ * See {@link Global_CSS#background-gradient background-gradient}.
+ *
+ * @member Ext.form.Panel
  */
 @mixin sencha-form($include-sliders: $include-form-sliders) {
 
@@ -145,32 +125,33 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
     margin-top: -.75em;
   }
 
-  .x-form .x-panel-body {
-    padding: 1em;
+  .x-form .x-scroll-container {
     background-color: $form-bg-color;
+  }
+
+  .x-form > .x-panel-inner,
+  .x-form .x-scroll-container > .x-panel-inner {
+    padding: 1em;
   }
 
   .x-input-el {
     min-height: $form-field-height;
     width: 100%;
     display: block;
-    background: $form-field-bg-color none;
+    background: #fff;
     -webkit-appearance: none;
   }
 
-  .x-item-selected {
+  .x-form-field-container {
+//    padding: .1em;
+  }
 
-    .x-list-label{
-      padding-right: ($form-spacing + 1.25em);
-      display: block;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      width: 100%;
+  .x-select-overlay {
+    .x-list-item {
+      padding-right: 2.6em;
     }
 
-    .x-list-selected{
-
+    .x-item-selected {
       &:before {
         @include checkmark(lighten(#000, 15%));
         margin-top: -.85em;
@@ -183,16 +164,8 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
   }
 
   .x-field {
-    overflow: hidden;
-    position: relative;
     min-height: $form-field-height;
     border-bottom: 1px solid $form-light;
-
-    // .x-input-text {
-    //   white-space: nowrap;
-    //   text-overflow: ellipsis;
-    //   overflow: hidden;
-    // }
 
     input, textarea, select, .x-field-slider {
       @extend .x-input-el;
@@ -223,9 +196,9 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
   }
 
   .x-form-fieldset {
+    margin: 0 0 1.5em;
 
-    margin: 1em 0 1.5em;
-    .x-panel-body {
+    .x-form-fieldset-inner {
       border: 1px solid $form-light;
       padding: 0;
       @if $include-highlights {
@@ -241,6 +214,7 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
     margin: 1em ( $form-spacing + .1em ) .3em;
     color: $form-dark;
     font-weight: bold;
+    white-space: nowrap;
   }
 
   .x-form-fieldset-instructions {
@@ -262,82 +236,145 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
     span {
       font-size: .8em;
       font-weight: bold;
+      white-space: nowrap;
     }
-  }
-
-  .x-form-field-container {
-    @include box-flex(1);
-    width: 100%;
-    position: relative;
-  }
-
-  .x-field {
-    @include display-box;
-  }
-
-  #{$form-input-fields} {
-    @include box-flex(1);
-  }
-
-  .x-label-align-left, .x-label-align-right {
-    @include box-orient(horizontal);
-    @include box-align(stretch);
-
-//    .x-form-label {
-//      width: $form-label-width;
-//    }
   }
 
   // Round the corners on fieldsets.
   // Warning: It ain't pretty
 
-  .x-form-fieldset .x-field {
-    &:first-child, &:first-child > :first-child:not(.x-input-toggle), &:first-child > :first-child input, &:first-child > :first-child textarea {
-      @if $include-border-radius { @include border-top-left-radius($form-fieldset-radius); }
-    }
+  .x-form-fieldset {
+    .x-field {
+      &:first-child {
+        @if $include-border-radius {
+          @include border-top-radius($form-fieldset-radius);
+        }
 
-    &:first-child, &:first-child > :last-child:not(.x-input-toggle), &:first-child > :last-child input, &:first-child > :last-child textarea {
-      @if $include-border-radius { @include border-top-right-radius($form-fieldset-radius); }
-    }
+        #{$form-input-fields} {
+          @if $include-border-radius { @include border-top-radius($form-fieldset-radius); }
+        }
 
-    &:last-child, &:last-child > :first-child:not(.x-input-toggle), &:last-child > :first-child input, &:last-child > :first-child textarea {
-      @if $include-border-radius { @include border-bottom-left-radius($form-fieldset-radius); }
-    }
+        &.x-field-clearable {
+          .x-field-clear-container {
+            @if $include-border-radius { @include border-top-right-radius($form-fieldset-radius); }
+          }
+        }
 
-    &:last-child, &:last-child > :last-child:not(.x-input-toggle), &:last-child > :last-child input, &:last-child > :last-child textarea {
-      @if $include-border-radius { @include border-bottom-right-radius($form-fieldset-radius); }
-    }
-  }
+        .x-field-select {
+          &:before {
+            @if $include-border-radius { @include border-top-right-radius($form-fieldset-radius); }
+          }
+        }
 
-  .x-label-align-right {
-    @include box-direction(reverse);
-    @include box-pack(end);
-  }
+        &.x-label-align-left {
+          .x-form-label {
+            @if $include-border-radius { @include border-top-left-radius($form-fieldset-radius); }
+          }
+          #{$form-input-fields} {
+            @if $include-border-radius { @include border-top-radius(0); }
+          }
 
-  .x-form-fieldset .x-label-align-right {
-    &:first-child {
-      .x-form-label {
-        @if $include-border-radius { @include border-top-right-radius($form-fieldset-radius); }
+          &.x-field-clearable {
+            .x-field-clear-container {
+              @if $include-border-radius { @include border-top-right-radius($form-fieldset-radius); }
+            }
+          }
+          &:not(.x-field-clearable) {
+            input, textarea {
+              @if $include-border-radius { @include border-top-right-radius($form-fieldset-radius); }
+            }
+          }
+        }
+
+        &.x-label-align-right {
+          .x-form-label {
+            @if $include-border-radius { @include border-top-right-radius($form-fieldset-radius); }
+          }
+          #{$form-input-fields} {
+            @if $include-border-radius { @include border-top-right-radius(0); }
+          }
+
+          &.x-field-clearable {
+            .x-field-clear-container {
+              @if $include-border-radius { @include border-top-left-radius($form-fieldset-radius); }
+            }
+          }
+          &:not(.x-field-clearable) {
+            input, textarea {
+              @if $include-border-radius { @include border-top-left-radius($form-fieldset-radius); }
+            }
+          }
+        }
+
+        &.x-label-align-bottom {
+          #{$form-input-fields} {
+            @if $include-border-radius { @include border-top-radius($form-fieldset-radius); }
+          }
+        }
       }
-      #{$form-input-fields} {
-        @if $include-border-radius { @include border-top-right-radius(0); }
-      }
-    }
-    &:last-child {
-      .x-form-label {
-        @if $include-border-radius { @include border-bottom-right-radius($form-fieldset-radius); }
-      }
-      #{$form-input-fields} {
-        @if $include-border-radius { @include border-bottom-right-radius(0); }
-      }
-    }
-  }
 
-  .x-label-align-top, .x-label-align-bottom {
-    @include box-orient(vertical);
-  }
-  .x-label-align-bottom {
-    @include box-direction(reverse);
+      &:last-child {
+        @if $include-border-radius {
+          @include border-bottom-radius($form-fieldset-radius);
+        }
+
+        #{$form-input-fields} {
+          @if $include-border-radius { @include border-bottom-radius($form-fieldset-radius); }
+        }
+
+        &.x-field-clearable {
+          .x-field-clear-container {
+            @if $include-border-radius { @include border-bottom-right-radius($form-fieldset-radius); }
+          }
+        }
+
+        .x-field-select {
+          &:before {
+            @if $include-border-radius { @include border-bottom-right-radius($form-fieldset-radius); }
+          }
+        }
+
+        &.x-label-align-left {
+          .x-form-label {
+            @if $include-border-radius { @include border-bottom-left-radius($form-fieldset-radius); }
+          }
+          #{$form-input-fields} {
+            @if $include-border-radius { @include border-bottom-left-radius(0); }
+          }
+
+          &.x-field-clearable {
+            .x-field-clear-container {
+              @if $include-border-radius { @include border-bottom-right-radius($form-fieldset-radius); }
+            }
+          }
+          &:not(.x-field-clearable) {
+            input, textarea {
+              @if $include-border-radius { @include border-bottom-right-radius($form-fieldset-radius); }
+            }
+          }
+        }
+
+        &.x-label-align-right {
+          .x-form-label {
+            @if $include-border-radius { @include border-bottom-right-radius($form-fieldset-radius); }
+          }
+          #{$form-input-fields} {
+            @if $include-border-radius { @include border-bottom-right-radius(0); }
+          }
+
+          &.x-field-clearable {
+            .x-field-clear-container {
+              @if $include-border-radius { @include border-bottom-left-radius($form-fieldset-radius); }
+            }
+          }
+          &:not(.x-field-clearable) {
+            input, textarea {
+              @if $include-border-radius { @include border-bottom-left-radius($form-fieldset-radius); }
+            }
+          }
+        }
+      }
+    }
   }
 
   // Required fields
@@ -355,6 +392,7 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
   // Create the dropdown arrow
   // for select fields
   .x-field-select {
+    position: relative;
 
     &:before, &:after {
       pointer-events: none;
@@ -369,12 +407,7 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
       margin: 1em;
       border: .4em solid transparent;
       border-top-color: $form-light;
-      z-index: 2;
     }
-
-//   &.x-label-align-right:after {
-//      right: $form-label-width;
-//    }
 
     &.x-label-align-top:after {
       top: auto;
@@ -384,17 +417,27 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
     &:before {
       @include insertion(4em,auto,0,auto);
       bottom: 0;
-      z-index: 1;
       @if $include-border-radius { @include border-right-radius(inherit); }
       @if $include-highlights { background: -webkit-gradient(linear, 0% 0%, 100% 0%, from(rgba($form-field-bg-color, 0)), color-stop(.5, rgba($form-field-bg-color, 1))); }
     }
 
+    .x-form-field-container {
+      margin-right: 40px;
+    }
   }
 
-  .x-item-disabled {
-    .x-form-label span, input, .x-spinner-body, select, textarea, .x-field-clear-container {
-      color: lighten($form-dark, 50%);
-    }
+  .x-form-field-container {
+    position: relative;
+  }
+
+  .x-item-disabled .x-form-label span,
+  .x-item-disabled input,
+  .x-item-disabled .x-spinner-body,
+  .x-item-disabled select,
+  .x-item-disabled textarea,
+  .x-item-disabled .x-field-clear-container {
+    color: lighten($form-dark, 50%);
+    pointer-events: none;
   }
 
   .x-field-textarea {
@@ -404,7 +447,18 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
     }
   }
 
-  .x-field .x-input-radio, .x-field .x-input-checkbox {
+  .x-field-number {
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  .x-field .x-input-radio,
+  .x-field .x-input-checkbox {
+    position: relative;
+
     &:after {
       @include checkmark($form-light);
     }
@@ -418,52 +472,31 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
     left: $form-spacing;
   }
 
-  // Spinner
+  // spinner
   .x-spinner {
-    border-bottom: 1px solid $form-light;
-  }
-
-  .x-spinner .x-spinner-body {
-    @include display-box;
-    @include box-direction(normal);
-  }
-
-  .x-spinner-body {
-    @include box-orient(horizontal);
-    @include box-align(stretch);
-    width: 100%;
-    text-align: center;
-
-    span {
-      font-size: 1.3em;
-      font-weight: bold;
-      @include bevel-text('light');
-    }
-
-    .x-form-field-container {
-      width: 3em;
-    }
-
     input {
-      padding: 0;
-      border-right: 0;
-      border-left: 0;
-      @if $include-border-radius { @include border-radius(0); }
-      border-color: $form-light;
       text-align: center;
     }
 
-    .x-spinner-down, .x-spinner-up {
-      @include box-flex(1);
+    //http://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-inputs-spin-box
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .x-spinner-button {
+      padding: .5em 0;
       font-weight: bold;
-      padding: .3em 0;
       @include toolbar-button($form-light);
     }
-    .x-spinner-down {
-      border-left: 0;
+    .x-spinner-button-down {
+      border: 0 !important;
+      border-right: 1px solid $form-light !important;
     }
-    .x-spinner-up {
-      border-right: 0;
+    .x-spinner-button-up {
+      border: 0 !important;
+      border-left: 1px solid $form-light !important;
     }
   }
 
@@ -496,10 +529,6 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
     padding: 0 .27em;
   }
 
-  .x-field-clearable input.x-field-clearable {
-    padding-right: $form-clear-size + $form-spacing;
-  }
-
   .x-label-align-top .x-field-clear {
     top: auto;
     bottom: .7em;
@@ -516,5 +545,9 @@ $form-scrollable-fields: '.x-field-slider, .x-field-toggle, .x-field-checkbox, .
 
   .x-select-overlay {
     min-width: 200px;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
   }
 }
