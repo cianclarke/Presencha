@@ -12,10 +12,11 @@ Presencha.views.Viewport = Ext.extend(Ext.Panel, {
         //put instances of cards into viewport
         Ext.apply(this, {
             items: [
+                { xtype: 'Presencha.views.PresoForm'},
                 {
                   xtype: 'panel',
                   html: 'hello world'
-                }
+                },
             ]
         });
         Presencha.views.Viewport.superclass.initComponent.apply(this, arguments);
