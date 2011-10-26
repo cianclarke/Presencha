@@ -11,6 +11,7 @@ Ext.define("Presencha.model.Slideshow", {
      ],
      proxy: {
         type: 'ajax',
+        //url: 'demo.json'
         url: 'http://api.presencha.com/slideshow/abc'
      } // TODO - guess the proxy sits on the SlideShow, and it reaches to our API?
 });

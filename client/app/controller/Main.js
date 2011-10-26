@@ -1,7 +1,7 @@
 Ext.define('Presencha.controller.Main', {
     extend: 'Ext.app.Controller',
     
-    views: ['Slideshow', 'PresoForm'],
+    views: ['PresoForm', 'Slideshow'],
     models: ['Slide', 'Slideshow'],
     stores: ['Slideshow'],
     refs: [
@@ -49,7 +49,7 @@ Ext.define('Presencha.controller.Main', {
       
       
      
-//    car.setItems([{xtype: 'panel', html: 'test'}])
+    car.setItems(slides);
     }
 
 });
