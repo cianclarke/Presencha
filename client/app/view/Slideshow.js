@@ -9,7 +9,7 @@ Ext.define('Presencha.view.Slideshow', {
     	this.callParent(arguments);
     	this.on('activeitemchange', function(carousel, value, oldValue, opts) {
     		//signal clients to go to the next slide
-    		var slideNum = 1; //TODO get desination slide
+    		var slideNum = carousel.getItems().indexOf(value);
     		PresenchaMsg.goTo(slideNum);
 //    		debugger;
     	});
@@ -23,7 +23,7 @@ Ext.define('Presencha.view.Slideshow', {
  * 
 	PresenchaMsg.joinSlideshow(key, function(from, message) {
        var carousel = c;
-       c.setActiveItem(c.getItems()[message.slideNumber]);
+       c.setActiveItem(message.slideNumber);
    })
  * 
  */
