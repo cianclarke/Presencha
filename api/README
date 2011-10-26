@@ -12,7 +12,13 @@ GET http://api.presencha.com/slideshow/<key> -- Get the Slideshow object with id
 Response:
 {
 	key : 'abcdefg01234567890',
-	slideCount : 123
+	title : 'The Title',
+	slideCount : 123,
+	slides : [
+		{
+			url : ''
+		}...
+	]
 }
 Error response: HTTP 404
 
