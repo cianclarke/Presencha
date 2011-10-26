@@ -42,24 +42,17 @@ Ext.define('Presencha.controller.Main', {
         });
         
         var queryString = Ext.urlDecode(window.location.search.substring(1));
-        debugger;
+        var url = "http://api.presencha.com/slideshow/" + queryString.key;
+        
         var slidestore = this.getSlideshowStore();
+        
         slidestore.on({
           'load': this.addSlides,
           scope: this
         });
         
         var vp = this.getViewport();
-        if (queryString.key){
-          // We want a slideshow
-          vp.add({
-            xtype: 'slideshow'
-          });
-          this.getSlideshowStore().load();
-        }else{
-          // We want a form upload
-          vp.setActiveItem(0);
-        }
+        
         
         
         
@@ -80,8 +73,9 @@ Ext.define('Presencha.controller.Main', {
             params: this.getPresoForm().down('formpanel').getValues(),
             success: function() {
                 var vp = this.getViewport();
-                vp.removeAll();
+                
                 vp.add({ xtype: 'slideshowsummary' });
+                this.getViewport().setActiveItem(1);
                 
             },
             failure: function() {
@@ -100,11 +94,9 @@ Ext.define('Presencha.controller.Main', {
       var title = record.get('title');
       
       for (var i=0; i<slides.length; i++){
-        slides[i].src = slides[i].url;
+        slides[i].src = PresenchaMsg.getUrl('http://api.presencha.com' + slides[i].url);
         slides[i].xtype = "image";
       }
-      
-      this.getViewport().setActiveItem(1);
      
     car.setItems(slides);
     }
