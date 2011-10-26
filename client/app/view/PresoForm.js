@@ -16,6 +16,7 @@ Ext.define('Presencha.view.PresoForm', {
             },
             {
                 xtype: 'formpanel',
+                cls: 'upload',
                 items: [
                     {
                         xtype: 'fieldset',
