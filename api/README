@@ -17,7 +17,7 @@ Response:
 	slideCount : 123,
 	slides : [
 		{
-			url : ''
+			url : 'http://determined.by/server.jpeg'
 		}...
 	]
 }
@@ -25,7 +25,8 @@ Error response: HTTP 404
 
 GET http://api.presencha.com/slideshow/<key>/<slideNumber> -- Get the Slide object for slideNumber
 {
-	url : 'http://entirely.up/to/you.jpeg'
+	url : 'http://determined.by/server.jpeg'
 }
 Error response: HTTP 404
+
 *The URL will be the master URL for the slide, and the Touch client will tranlate the image URL in to a Sencha.io src URL, i.e. "http://src(1|2|3).sencha.io/<Slide.url>"
