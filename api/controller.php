@@ -6,13 +6,15 @@ $slideshowFolder = dirname(__FILE__) . '/slides';
 header('Content-type: application/json');
 
 switch ($_GET['mode']) {
+    
     // show the details of a slide
     case 'slide':
         $slide = array(
-            'url' => 'http://someurl.com/image.png'
+            'url' => 'http://lorempixel.com/480/320'
         );
         echo json_encode($slide);
         break;
+
     // show the details of a slideshow
     case 'detail':
         // dummy data
@@ -21,14 +23,16 @@ switch ($_GET['mode']) {
             'title' => 'The Title',
             'slideCount' => 123,
             'slides' => array(
-                array('url' => 'http://someurl.com/image.png')
+                array('url' => 'http://lorempixel.com/480/320'),
+				array('url' => 'http://lorempixel.com/480/320'),
+				array('url' => 'http://lorempixel.com/480/320')
             )
         );
         echo json_encode($slideshow);
         break;
+
     // upload a new slideshow
     case 'upload':
-        var_dump($_FILES);
         if (isset($_FILES['slideshow']) && !empty($_FILES['slideshow'])) {
             $response = array(
                 'key' => 'abcdefg01234567890',
@@ -43,7 +47,7 @@ switch ($_GET['mode']) {
                         <title>Upload a slideshow</title>
                     </head>
                     <body>
-                        <form method="POST" enctype="application/x-www-form-urlencoded">
+                        <form method="POST" action="" enctype="multipart/form-data">
                             <input type="file" name="slideshow">
                             <input type="submit" name="Upload">
                         </form>
