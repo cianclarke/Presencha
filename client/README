@@ -1,0 +1,7 @@
+UI URL Endpoints:
+
+http://presencha.com -- Upload a PDF to create a slideshow
+
+http://presencha.com/<key> -- Slideshow Viewer client
+
+http://presencha.com/<key>?<secretKey> -- Slideshow controller client
