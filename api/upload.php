@@ -100,7 +100,7 @@ if (isset($_POST) && !empty($_POST)) {
                 <title>Upload a slideshow</title>
             </head>
             <body>
-                <form method="post" enctype="application/x-www-form-urlencoded">
+                <form method="post" enctype="multipart/form-data">
                     <input type="text" name="title">
                     <input type="file" name="slideshow">
                     <input type="submit" name="Upload">
