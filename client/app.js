@@ -57,6 +57,7 @@ Ext.define('PresenchaMsg', {
 	},
 	
 	goTo : function(slideNumber) {
+		if(!PresenchaMsg.isPresenter) return;
 		PresenchaMsg.queue.publish({
 			slideNumber : slideNumber
 		});
