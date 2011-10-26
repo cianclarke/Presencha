@@ -3,7 +3,7 @@ Ext.define('Presencha.view.Slideshow', {
     id: 'slideShow',
     xtype: 'slideshow',
     config: {
-      items: [{html: 'defaultItemHack'}]
+      items: [{html: '&nbsp;'}]
     },
     initialize : function() {
     	this.callParent(arguments);
@@ -13,6 +13,7 @@ Ext.define('Presencha.view.Slideshow', {
     		PresenchaMsg.goTo(slideNum);
 //    		debugger;
     	});
+    	PresenchaMsg.carousel = this;
     }
 });
 

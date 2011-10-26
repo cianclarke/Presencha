@@ -98,7 +98,19 @@ Ext.define('Presencha.controller.Main', {
       }
       debugger;
      
-    car.setItems(slides);
+    car.setItems(slides, function(){
+    
+    if(PresenchaMsg.isPresenter) {
+    PresenchaMsg.startSlideshow(key);
+    }
+    else {
+    	PresenchaMsg.joinSlideshow(key, function(from, message) {
+    	   var carousel = PresenchaMsg.carousel;
+       	c.setActiveItem(message.slideNumber);
+   	});
+    }
+    
+    });
     }
 
 });
