@@ -71,7 +71,6 @@ Ext.define('Presencha.controller.Main', {
         slideStore.setProxy(newProxy);
         
         
-        
         slideStore.on({
           'load': this.addSlides,
           scope: this
@@ -80,6 +79,8 @@ Ext.define('Presencha.controller.Main', {
         slideStore.load();
         
         var vp = this.getViewport();
+        
+        window.onkeydown = this.keyboardEvent;
         
         
     },
@@ -135,6 +136,27 @@ Ext.define('Presencha.controller.Main', {
    	});
     }
   
+    },
+    keyboardEvent: function(ev){
+      //TODO: How to get the carousel view in scope here? Curry?
+      var code = ev.keyCode;
+      switch (code) {
+        case 37: // left
+          // go back a slide
+          break;
+        case 38: // up
+          //go forward a slide
+          break;
+        case 39: // right
+          // go forward a slide
+          break;
+        case 40: // down
+          // go back a slide
+          break;
+      }
+
+
     }
 
 });
+
