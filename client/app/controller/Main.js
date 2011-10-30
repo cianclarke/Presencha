@@ -41,23 +41,45 @@ Ext.define('Presencha.controller.Main', {
           }
         });
         
+        
+        /* Retrieve the query string from the URL - looks something like /?key=abc&secretkey=def */
         var queryString = Ext.urlDecode(window.location.search.substring(1));
-        var url = "http://api.presencha.com/slideshow/" + queryString.key;
         
-        if(queryString.secretKey)
+        if (queryString.key){
+          var key = queryString.key; // todo: Error check
+          key = key.replace("/",""); // trailing slash is included when we urlDecode
+          var url = "http://api.presencha.com/slideshow/" + queryString.key;
+        }else{
+          Ext.Msg.alert('No Slideshow Key', 'Please provide a slideshow key'); // TODO: right now if we hit root, this is fired. Need to instead show upload box & recents list
+        }
+        
+        
+        
+        if(queryString.secretKey){
+          var secretKey = queryString.secretKey;
+          secretKey = secretKey.replace("/", ""); // trailing slash is included when we urlDecode
         	PresenchaMsg.isPresenter = true;
+        }
+
+        var slideStore = this.getSlideshowStore();
         
-        var slidestore = this.getSlideshowStore();
+        /* Change the proxy of our store to have the correct URL. */
+        var newProxy = {
+          type: 'ajax',
+          url: 'http://api.presencha.com/slideshow/' + key
+       }
+        slideStore.setProxy(newProxy);
         
-        slidestore.on({
+        
+        
+        slideStore.on({
           'load': this.addSlides,
           scope: this
         });
         
+        slideStore.load();
+        
         var vp = this.getViewport();
-        
-        
-        
         
         
     },
