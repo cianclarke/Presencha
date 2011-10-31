@@ -1,0 +1,258 @@
+/*
+*
+*  Golden Grid System (1.01)	<http://goldengridsystem.com/>
+*  by Joni Korpi 				<http://jonikorpi.com/>
+*  licensed under MIT			<http://opensource.org/licenses/mit-license.php>
+*	
+*/
+/*
+*
+*  Margin, padding, and border resets
+*  except for form elements
+*
+*/
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+th,
+td,
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+/*
+*
+*  Consistency fixes
+*  adopted from http://necolas.github.com/normalize.css/
+*
+*/
+html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body {
+  min-height: 100%;
+  font-size: 100%;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+audio,
+canvas,
+video {
+  display: block;
+}
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+b, strong {
+  font-weight: bold;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+input,
+textarea,
+button,
+select {
+  margin: 0;
+  font-size: 100%;
+  line-height: normal;
+  vertical-align: baseline;
+}
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+
+h1, h2, h3 {
+  font-weight:normal;
+}
+
+
+body {
+  font-size: 1em;
+  line-height: 1.5em;
+  font-family: 'Helvetica', 'Sans Serif';
+}
+
+nav {
+  background: #222;
+  height: 55px;
+  margin: 0;
+}
+
+nav img.logo {
+  float:left;
+  margin:16px 0 16px 0;
+}
+
+nav img.soon {
+  float:right;
+}
+
+header {
+  background: #333;
+  padding: 45px 0 28px 0;
+  height:235px;
+}
+
+header h1 {
+  font-size:1.65em;
+  line-height:1.3em;
+  color: #eee;
+  padding:20px 10px 12px 0;
+}
+
+header h2 {
+  font-size:1em;
+  color: #ccc;
+}
+
+header img {
+  float: left;
+  margin:0 40px 0 -10px;
+}
+
+article section.steps {
+  background: #eee;
+}
+
+article section.steps .wrap {
+  padding:145px 0 85px 0;
+  background: url('../../resources/images/steps.png') 0 80px no-repeat;
+}
+
+article section.steps ul {
+
+}
+
+article section.steps li {
+  display:inline-block;
+  text-align:center;
+  vertical-align:top;
+}
+
+article section.steps li.uno,
+article section.steps li.tres {
+  width:110px;
+}
+
+article section.steps li.dos {
+  width:320px;
+} 
+
+article section.steps li.dos p {
+  padding: 0 90px;
+} 
+
+article section.steps li p {
+  color:#aaa;
+  font-size:0.9em; 
+  padding:0; 
+  line-height: 1.3em;
+}
+
+article section.beta {
+  background: #ddd;
+}
+
+article section.beta h3 {
+  color: #777;
+  margin:3px 0 6px 0;
+}
+
+article section.beta p {
+  color: #999;
+  line-height: 1.25em;
+  font-size: 0.95em;
+}
+
+article section.beta .wrap {
+  padding:71px 0 85px 0;
+  background: url('../../resources/images/beta.png') 15px 71px no-repeat;
+}
+
+article section.beta .wrap h3,
+article section.beta .wrap p {
+  margin-left: 140px;
+}
+
+article section.sosumi {
+  background:#eee;
+}
+
+article section.sosumi p {
+  color:#ccc;
+  padding:20px 0 30px 10px;
+  font-size:0.8em;
+}
+
+article a {
+  color:#777;
+  text-decoration:underline;
+}
+
+.wrap {
+  width: 550px;
+  margin:0 auto;
+}
+
+.hundy {
+  width: 100%;
+}
+
+nav, header, article {
+  width:100%;
+}
+
