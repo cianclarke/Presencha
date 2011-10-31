@@ -209,6 +209,17 @@ article section.steps li p {
   line-height: 1.3em;
 }
 
+/*Overrides on steps for the features section*/
+article section.steps.features ul {
+  background: url('../../resources/images/features.png') 0 0 no-repeat;
+}
+
+article section.steps.features .wrap {
+  padding:0px 0 55px 0;
+  
+}
+
+
 article section.beta {
   background: #ddd;
 }
