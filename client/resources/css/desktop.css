@@ -168,13 +168,19 @@ article section.steps {
   background: #eee;
 }
 
+article section.steps h3 {
+  margin-left: 7px;
+}
+
 article section.steps .wrap {
-  padding:145px 0 85px 0;
-  background: url('../../resources/images/steps.png') 0 80px no-repeat;
+  padding:45px 0 65px 0;
+  
 }
 
 article section.steps ul {
-
+  margin-top:20px;
+  background: url('../../resources/images/steps.png') 0 0 no-repeat;
+  padding: 65px 0 0 0;
 }
 
 article section.steps li {
@@ -207,25 +213,30 @@ article section.beta {
   background: #ddd;
 }
 
-article section.beta h3 {
+article section h3 {
+  font-size:1.2em;
   color: #777;
-  margin:3px 0 6px 0;
+}
+
+article section.beta h3 {
+  margin:0;
 }
 
 article section.beta p {
   color: #999;
   line-height: 1.25em;
   font-size: 0.95em;
+  margin-top:15px;
 }
 
 article section.beta .wrap {
-  padding:71px 0 85px 0;
-  background: url('../../resources/images/beta.png') 15px 71px no-repeat;
+  padding:43px 0 60px 0;
+  background: url('../../resources/images/beta.png') 98% 68px no-repeat;
 }
 
 article section.beta .wrap h3,
 article section.beta .wrap p {
-  margin-left: 140px;
+  margin-right: 130px;
 }
 
 article section.sosumi {
