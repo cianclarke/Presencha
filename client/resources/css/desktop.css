@@ -164,6 +164,30 @@ header img {
   margin:0 40px 0 -10px;
 }
 
+header .headerButton {
+	font-size: 1.3em;
+	padding: 5px 15px;
+	margin: 10px 0 0 0px;
+	display: inline-block;
+	background-image: -webkit-gradient(
+       linear,
+      left bottom,
+      left top,
+    
+      color-stop(0.14, rgb(107,222,253)),
+      color-stop(0.57, rgb(8,180,251))
+      ) !important;
+      border-radius: 12px;
+      color: #fff;
+      text-decoration: none;
+}
+
+header .upload input {
+	display: inline;
+	width: 230px;
+	color: #fff;
+}
+
 article section.steps {
   background: #eee;
 }
@@ -278,3 +302,10 @@ nav, header, article {
   width:100%;
 }
 
+#hcard2 { 
+	display: none;
+}
+
+#getStarted {
+	display: none; /* Unless we pass a preview hash */	
+}
