@@ -188,6 +188,11 @@ header .upload input {
 	color: #fff;
 }
 
+header .upload input[type=text]{
+	color: #000;	
+}
+
+
 article section.steps {
   background: #eee;
 }

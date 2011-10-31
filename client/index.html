@@ -34,9 +34,10 @@
 				<div class="wrap upload" id="hcard2">
 					<img src="resources/images/devices.png"/>
 					<h1>To get started, <br />upload a PDF</h1>
-					<form action="http://api.presencha.com/slideshow" method="post">
-						<input type="file" name="presentation">
-						<input type="submit" class="headerButton" name="submit" value="Submit" />	
+					<form action="http://api.presencha.com/slideshow" method="post" enctype="multipart/form-data">
+						<input type="text" name="title" placeholder="Presentation Title">
+						<input type="file" name="slideshow">
+						<input type="submit" class="headerButton" name="Upload" value="Submit" />	
 					</form>
 				</div>
 
