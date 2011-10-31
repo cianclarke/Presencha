@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='Presencha-view-FileUploadField'>/**
+</span> * @class Presencha.view.FileUploadField
+ *
+ * File uploader view
+ */
+Ext.define('Presencha.view.FileUploadField', {
+    extend: 'Ext.field.Field',
+    xtype: 'fileuploadfield',
+    
+    config: {
+<span id='Presencha-view-FileUploadField-cfg-file'>        /**
+</span>         * @cfg {Boolean} file Enable file uploading
+         */
+        file: true
+    },
+<span id='Presencha-view-FileUploadField-method-applyFile'>    /**
+</span>     * Add a file to the form's upload field based on the given filename
+     * @param {String} file
+     * @return {String} file
+     */
+    applyFile: function(file) {
+        if(file) {
+            file = this.add({
+                xtype: 'component',
+                html: ['&lt;div class=&quot;x-input-el&quot;&gt;',
+                '&lt;input type=&quot;file&quot; name=&quot;' + this.getName() + '&quot;&gt;',
+                '&lt;/div&gt;'
+                ].join(&quot; &quot;)
+            })
+        }
+        
+        return file;
+    },
+
+<span id='Presencha-view-FileUploadField-method-getValue'>    /**
+</span>     * Get the filename of the file being uploaded
+     */
+    getValue: function() {
+        return this.getFile().element.down('input').dom.value;
+    }
+})</pre>
+</body>
+</html>

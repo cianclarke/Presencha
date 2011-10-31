@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='Presencha-view-SlideshowSummary'>/**
+</span> * @class Presencha.view.SlideshowSummary
+ *
+ * Summary of the slideshow links
+ */
+Ext.define('Presencha.view.SlideshowSummary', {
+    extend: 'Ext.Panel',
+    xtype: 'slideshowsummary',
+    config: {
+        layout: 'fit',
+        html: 'asdfasd',
+        tpl: [
+            '&lt;h1&gt;Find your form here&lt;/h1&gt;',
+            '&lt;p&gt;Public: http://presencha.com/{key}&lt;/p&gt;',
+            '&lt;p&gt;Presenter: http://presencha.com/{key}/{secretkey}&lt;/p&gt;',
+        ]
+    }
+});</pre>
+</body>
+</html>

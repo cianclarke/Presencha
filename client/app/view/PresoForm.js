@@ -1,3 +1,8 @@
+/**
+ * @class Presencha.view.PresoForm
+ *
+ * Presentation upload form
+ */
 Ext.define('Presencha.view.PresoForm', {
     extend: 'Ext.Panel',
     xtype: 'presoform',
