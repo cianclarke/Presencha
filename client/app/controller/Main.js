@@ -41,28 +41,46 @@ Ext.define('Presencha.controller.Main', {
           }
         });
         
-        var queryString = Ext.urlDecode(window.location.search.substring(1));
-        debugger;
-        var slidestore = this.getSlideshowStore();
-        slidestore.on({
-          'load': this.addSlides,
-          scope: this
-        });
         
-        var vp = this.getViewport();
+        /* Retrieve the query string from the URL - looks something like /?key=abc&secretkey=def */
+        var queryString = Ext.urlDecode(window.location.search.substring(1));
+        
         if (queryString.key){
-          // We want a slideshow
-          vp.add({
-            xtype: 'slideshow'
-          });
-          this.getSlideshowStore().load();
+          var key = queryString.key; // todo: Error check
+          key = key.replace("/",""); // trailing slash is included when we urlDecode
+          var url = "http://api.presencha.com/slideshow/" + queryString.key;
         }else{
-          // We want a form upload
-          vp.setActiveItem(0);
+          Ext.Msg.alert('No Slideshow Key', 'Please provide a slideshow key'); // TODO: right now if we hit root, this is fired. Need to instead show upload box & recents list
         }
         
         
         
+        if(queryString.secretKey){
+          var secretKey = queryString.secretKey;
+          secretKey = secretKey.replace("/", ""); // trailing slash is included when we urlDecode
+        	PresenchaMsg.isPresenter = true;
+        }
+
+        var slideStore = this.getSlideshowStore();
+        
+        /* Change the proxy of our store to have the correct URL. */
+        var newProxy = {
+          type: 'ajax',
+          url: 'http://api.presencha.com/slideshow/' + key
+       }
+        slideStore.setProxy(newProxy);
+        
+        
+        slideStore.on({
+          'load': this.addSlides,
+          scope: this
+        });
+        
+        slideStore.load();
+        
+        var vp = this.getViewport();
+        
+        window.onkeydown = this.keyboardEvent;
         
         
     },
@@ -80,8 +98,9 @@ Ext.define('Presencha.controller.Main', {
             params: this.getPresoForm().down('formpanel').getValues(),
             success: function() {
                 var vp = this.getViewport();
-                vp.removeAll();
+                
                 vp.add({ xtype: 'slideshowsummary' });
+                this.getViewport().setActiveItem(1);
                 
             },
             failure: function() {
@@ -100,13 +119,44 @@ Ext.define('Presencha.controller.Main', {
       var title = record.get('title');
       
       for (var i=0; i<slides.length; i++){
-        slides[i].src = slides[i].url;
-        slides[i].xtype = "image";
+        slides[i].html = '<img src="' + PresenchaMsg.getSlideUrl('http://api.presencha.com' + slides[i].url) + '">'; 
+        slides[i].xtype = 'container';
       }
-      
-      this.getViewport().setActiveItem(1);
+    //  debugger;
      
     car.setItems(slides);
+    
+    if(PresenchaMsg.isPresenter) {
+    PresenchaMsg.startSlideshow('test');
+    }
+    else {
+    	PresenchaMsg.joinSlideshow('test', function(from, message) {
+    	   var c = PresenchaMsg.carousel;
+       	c.setActiveItem(message.slideNumber-1);
+   	});
+    }
+  
+    },
+    keyboardEvent: function(ev){
+      //TODO: How to get the carousel view in scope here? Curry?
+      var code = ev.keyCode;
+      switch (code) {
+        case 37: // left
+          // go back a slide
+          break;
+        case 38: // up
+          //go forward a slide
+          break;
+        case 39: // right
+          // go forward a slide
+          break;
+        case 40: // down
+          // go back a slide
+          break;
+      }
+
+
     }
 
 });
+

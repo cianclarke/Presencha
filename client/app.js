@@ -76,7 +76,7 @@ Ext.define('PresenchaMsg', {
 	
 	getSlideUrl : function(url) {
 		var n = Math.ceil(Math.random() * 3);
-		return 'http://src' + n + '.sencha.io/' + url;
+		return 'http://src.sencha.io/' + url;
 	},
 	
 	stopSlideshow : function(callback, scope) {
