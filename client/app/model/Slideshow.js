@@ -1,3 +1,8 @@
+/**
+ * @class Presencha.model.Slideshow
+ *
+ * Model for a complete slide show
+ */
 Ext.define("Presencha.model.Slideshow", {
     extend: "Ext.data.Model",
     fields: [

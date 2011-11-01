@@ -1,3 +1,8 @@
+/**
+ * @class Presencha.store.Slideshow
+ *
+ * Store for a slideshow
+ */
 Ext.define("Presencha.store.Slideshow", {
   extend: "Ext.data.Store",
   model: "Presencha.model.Slideshow",

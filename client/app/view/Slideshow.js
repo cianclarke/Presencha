@@ -1,3 +1,8 @@
+/**
+ * @class Presencha.view.Slideshow
+ *
+ * Slideshow view
+ */
 Ext.define('Presencha.view.Slideshow', {
     extend: 'Ext.Carousel',
     id: 'slideShow',
@@ -5,6 +10,9 @@ Ext.define('Presencha.view.Slideshow', {
     config: {
       items: [{html: '&nbsp;'}]
     },
+    /**
+     * Initialize the slideshow
+     */
     initialize : function() {
     	this.callParent(arguments);
     	this.on('activeitemchange', function(carousel, value, oldValue, opts) {
