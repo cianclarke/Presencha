@@ -1,4 +1,7 @@
 <?php
+/**
+ * Proof of concept controller for the hackathon
+ */
 // A little config
 $slideshowFolder = dirname(__FILE__) . '/slides';
 

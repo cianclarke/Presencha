@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+<project version="0.15.1" title="Presencha API">
+  <file path="controller.php" hash="7e9fb6ae5ea938daa96fde3c5e1fa9f4" package="Default">
+    <docblock>
+      <description>Proof of concept controller for the hackathon</description>
+      <long-description>
+</long-description>
+    </docblock>
+    <parse_markers>
+      <error line="2">No Page-level DocBlock was found in file controller.php</error>
+    </parse_markers>
+  </file>
+  <file path="upload.php" hash="f1d0b4cd874fd55ca6c2267902cd07a4" package="Default">
+    <docblock>
+      <description>Manager for uploaded files and conversion from PDF to images</description>
+      <long-description>
+</long-description>
+    </docblock>
+    <parse_markers>
+      <error line="6">No Page-level DocBlock was found in file upload.php</error>
+      <critical line="11">No short description for property $maxFilesize</critical>
+    </parse_markers>
+    <class final="false" abstract="false" line="9" namespace="default" package="Default">
+      <name>manager</name>
+      <extends/>
+      <full_name>\manager</full_name>
+      <docblock>
+        <description>Manager for uploaded files and conversion from PDF to images</description>
+        <long-description>
+</long-description>
+      </docblock>
+      <property final="false" static="false" visibility="public" line="14" package="Default">
+        <name>$maxFilesize</name>
+        <default>3</default>
+        <docblock>
+          <description/>
+          <long-description>
+</long-description>
+          <tag line="11" name="var" description="Maximum file size (in MB's)" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" line="20" package="Default">
+        <name>getSlidesDir</name>
+        <docblock>
+          <description>Get the storage directory for the slides</description>
+          <long-description>
+</long-description>
+          <tag line="16" name="return" description="directory where slides are stored" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="29" package="Default">
+        <name>generateKey</name>
+        <docblock>
+          <description>Generate a random slides key</description>
+          <long-description>
+</long-description>
+          <tag line="25" name="return" description="key" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" line="40" package="Default">
+        <name>validateUpload</name>
+        <docblock>
+          <description>Validate an uploaded file that it is available, has no errors
+has the mime-type of a pdf and doesn't exceeed the maximum size</description>
+          <long-description>
+</long-description>
+          <tag line="34" name="param" description="" type="" variable="$field"/>
+          <tag line="34" name="return" description="" type="bool|string">
+            <type by_reference="false">bool</type>
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="40">
+          <name>$field</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="68" package="Default">
+        <name>upload</name>
+        <docblock>
+          <description>Upload the pdf</description>
+          <long-description>
+</long-description>
+          <tag line="61" name="param" description="" type="array" variable="$field">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="61" name="param" description="" type="string" variable="$title">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="61" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="68">
+          <name>$field</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="68">
+          <name>$title</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="97" package="Default">
+        <name>writeMetaFile</name>
+        <docblock>
+          <description>Write the file containing the presentation's metadata</description>
+          <long-description>
+</long-description>
+          <tag line="92" name="param" description="" type="" variable="$meta"/>
+          <tag line="92" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="97">
+          <name>$meta</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="109" package="Default">
+        <name>getPageCount</name>
+        <docblock>
+          <description>Get the number of pages</description>
+          <long-description>
+</long-description>
+          <tag line="104" name="param" description="" type="" variable="$fileName"/>
+          <tag line="104" name="return" description="" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="109">
+          <name>$fileName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="122" package="Default">
+        <name>convertPdfToImages</name>
+        <docblock>
+          <description>Convert the PDF to a single image per page</description>
+          <long-description>
+</long-description>
+          <tag line="115" name="param" description="" type="" variable="$fileName"/>
+          <tag line="115" name="param" description="" type="" variable="$pages"/>
+          <tag line="115" name="param" description="" type="" variable="$meta"/>
+          <tag line="115" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="122">
+          <name>$fileName</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="122">
+          <name>$pages</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="122">
+          <name>$meta</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" line="150" package="Default">
+        <name>convertImage</name>
+        <docblock>
+          <description>Convert the image to the correct format</description>
+          <long-description>
+</long-description>
+          <tag line="143" name="param" description="" type="" variable="$fileName"/>
+          <tag line="143" name="param" description="" type="" variable="$page"/>
+          <tag line="143" name="param" description="" type="" variable="$slideshowPath"/>
+          <tag line="143" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="150">
+          <name>$fileName</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="150">
+          <name>$page</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="150">
+          <name>$slideshowPath</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" line="170" package="Default">
+        <name>showError</name>
+        <docblock>
+          <description>Exit with an error</description>
+          <long-description>
+</long-description>
+          <tag line="165" name="param" description="" type="" variable="$message"/>
+          <tag line="165" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="170">
+          <name>$message</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <package name="Default"/>
+  <namespace name="default"/>
+  <marker>todo</marker>
+  <marker>fixme</marker>
+</project>

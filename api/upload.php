@@ -3,19 +3,40 @@
 
 date_default_timezone_set('Europe/Amsterdam');
 
+/**
+ * Manager for uploaded files and conversion from PDF to images
+ */
 class manager
 {
+    /**
+     * @var int Maximum file size (in MB's)
+     */
+    public $maxFilesize = 3;
 
+    /**
+     * Get the storage directory for the slides
+     * @return string directory where slides are stored
+     */
     public function getSlidesDir()
     {
         return dirname(__FILE__).'/slides';
     }
 
+    /**
+     * Generate a random slides key
+     * @return string key
+     */
     public function generateKey()
     {
         return md5(microtime().'presencha');
     }
-    
+
+    /**
+     * Validate an uploaded file that it is available, has no errors
+     * has the mime-type of a pdf and doesn't exceeed the maximum size
+     * @param $field
+     * @return bool|string
+     */
     protected function validateUpload($field)
     {
         if (!isset($field['tmp_name'])) {
@@ -30,7 +51,7 @@ class manager
             return 'Please upload a valid pdf file';
         }
         
-        $maxSize = (3 * 1024 * 1024);
+        $maxSize = ($this->maxFilesize * 1024 * 1024);
         if ($field['size'] > $maxSize) {
             return 'Max upload size of 3 MB exceeded';
         }
@@ -68,6 +89,11 @@ class manager
         ));
     }
 
+    /**
+     * Write the file containing the presentation's metadata
+     * @param $meta
+     * @return string
+     */
     public function writeMetaFile($meta)
     {
         $fileName = $this->getSlidesDir() .'/'.$meta['key'].'/meta.json';
@@ -75,13 +101,24 @@ class manager
         return $fileName;
     }
 
-    // Not 100% correct but it works most of the time
+    /**
+     * Get the number of pages
+     * @param $fileName
+     * @return int
+     */
     public function getPageCount($fileName)
     {
         $pdftext = file_get_contents($fileName);
         return preg_match_all("/\/Page\W/", $pdftext, $dummy);
     }
 
+    /**
+     * Convert the PDF to a single image per page
+     * @param $fileName
+     * @param $pages
+     * @param $meta
+     * @return array
+     */
     public function convertPdfToImages($fileName, $pages, $meta)
     {
         $key = $this->generateKey();
@@ -103,6 +140,13 @@ class manager
         return $meta;
     }
 
+    /**
+     * Convert the image to the correct format
+     * @param $fileName
+     * @param $page
+     * @param $slideshowPath
+     * @return string
+     */
     protected function convertImage($fileName, $page, $slideshowPath)
     {
         $im = new Imagick;
@@ -117,7 +161,12 @@ class manager
 
         return 'slide'. ($page + 1) . '.png';
     }
-    
+
+    /**
+     * Exit with an error
+     * @param $message
+     * @return void
+     */
     protected function showError($message)
     {
         header("HTTP/1.0 404 Not Found");
@@ -126,9 +175,9 @@ class manager
     }
 }
 
-
-// MAIN
-        
+/**
+ * Bootstrapping
+ */
 if (isset($_POST) && !empty($_POST)) {
     $manager = new Manager();
     echo $manager->upload($_FILES['slideshow'], $_POST['title']);
