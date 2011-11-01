@@ -1,3 +1,8 @@
+/**
+ * @class Presencha.controller.Main
+ *
+ * The presentation controller for the touch interface
+ */
 Ext.define('Presencha.controller.Main', {
     extend: 'Ext.app.Controller',
     
@@ -26,7 +31,9 @@ Ext.define('Presencha.controller.Main', {
             selector: 'slideshowsummary'
         }
     ],
-    
+    /**
+     * Launching of the application
+     */
     launch: function() {
       // TODO: Use routing to determine the API call we need to make
       // Set the proxy url of our slideshow store to this
@@ -84,11 +91,17 @@ Ext.define('Presencha.controller.Main', {
         
         
     },
-    
+
+    /**
+     * Show the slides from the list
+     */
     showSlides: function(){
         // handler functions here var list = this.getSlideList();
     },
-    
+
+    /**
+     * Handles uploading slides
+     */
     onUploadTap: function() {
         Ext.Ajax.request({
             url: 'http://api.presencha.com/slideshow',
@@ -110,6 +123,11 @@ Ext.define('Presencha.controller.Main', {
         })
     },
 
+    /**
+     * Add new slides to the carousel as a container with an image in it
+     * @param {Object} data
+     * @param {Array} p2
+     */
     addSlides: function(data, p2){
       var car = this.getSlideShow();
       if (!p2) return;
@@ -137,6 +155,10 @@ Ext.define('Presencha.controller.Main', {
     }
   
     },
+    /**
+     * Take keyboard events
+     * @param {Number} ev
+     */
     keyboardEvent: function(ev){
       //TODO: How to get the carousel view in scope here? Curry?
       var code = ev.keyCode;

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='Presencha-model-Slideshow'>/**
+</span> * @class Presencha.model.Slideshow
+ *
+ * Model for a complete slide show
+ */
+Ext.define(&quot;Presencha.model.Slideshow&quot;, {
+    extend: &quot;Ext.data.Model&quot;,
+    fields: [
+         {name: &quot;id&quot;, type: &quot;string&quot;}, // unique ID of this presentation as per the API
+         {name: &quot;title&quot;, type: &quot;string&quot;}, // Title of the presentation
+         {name: &quot;slides&quot;, type: &quot;auto&quot;}
+         //{name: &quot;audio&quot;, type: &quot;string&quot;} // audio URL?
+     ],
+     associations: [
+         {type: 'hasMany', model: 'Presencha.model.Slide', name: 'slidess'}
+     ],
+     proxy: {
+        type: 'ajax',
+        url: 'http://api.presencha.com/slideshow/meh'
+        //url: 'http://api.presencha.com/slideshow/abc'
+     } // TODO - guess the proxy sits on the SlideShow, and it reaches to our API?
+});
+
+</pre>
+</body>
+</html>

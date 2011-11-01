@@ -11,6 +11,8 @@
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
+		<script type="text/javascript" src="resources/js/jquery-1.6.4.min.js"></script>		
+		<script type="text/javascript" src="desktop.js"></script>
 	</head>
 	
 	<body lang="en">
@@ -22,11 +24,23 @@
 			</nav>
 
 			<header>
-				<div class="wrap">
+				<div class="wrap" id="hcard1">
 					<img src="resources/images/devices.png"/>
 					<h1>Introducing the next evolution of the deck</h1>
 					<h2>Presencha is the easiest way to share with your audience, across any platform, absolutely free of charge.</h2>
+					<a class="headerButton" id="getStarted" onclick="getStarted()" href="#">Get Started</a>
 				</div>
+				
+				<div class="wrap upload" id="hcard2">
+					<img src="resources/images/devices.png"/>
+					<h1>To get started, <br />upload a PDF</h1>
+					<form action="http://api.presencha.com/slideshow" method="post" enctype="multipart/form-data">
+						<input type="text" name="title" placeholder="Presentation Title">
+						<input type="file" name="slideshow">
+						<input type="submit" class="headerButton" name="Upload" value="Submit" />	
+					</form>
+				</div>
+
 			</header>
 			
 			<article>
@@ -40,6 +54,19 @@
 						</ul>
 					</div>
 				</section>
+				
+    			<section class="steps features">
+					<div class="wrap">
+						<h3>Features</h3>
+						<ul>
+							<li class="uno"><p>Screencast to multiple viewers</p></li>
+							<li class="dos"><p>Mobile & <br /> Cross Platform</p></li>
+							<li class="tres"><p>Private presenter link</p></li>
+						</ul>
+					</div>
+				</section>
+
+
 				<section class="beta">
 					<div class="wrap">
 						<h3>Want a sneak peak?</h3>

@@ -29,6 +29,9 @@ Ext.application({
     }
 });
 
+/**
+ * @class PresenchaMsg
+ */
 Ext.define('PresenchaMsg', {
 	singleton : true,
 	key : '',
@@ -42,10 +45,12 @@ Ext.define('PresenchaMsg', {
 	constructor : function() {
 		//
 	},
-	
-	/**
-	 * Start a slideshow (as a superuser)
-	 */
+
+    /**
+     * Start a slideshow (as a superuser)
+     * @param {String} key
+     * @param {Function} callback
+     */
 	startSlideshow : function(key, callback) {
 		PresenchaMsg.key = key;
 		Ext.io.messaging.getQueue(key, function(queue) {
@@ -55,14 +60,24 @@ Ext.define('PresenchaMsg', {
         	if(callback) callback(queue);
 		});
 	},
-	
+
+    /**
+     * Presenter method to go to a certain slide number
+     * @param {Number} slideNumber
+     */
 	goTo : function(slideNumber) {
 		if(!PresenchaMsg.isPresenter) return;
 		PresenchaMsg.queue.publish({
 			slideNumber : slideNumber
 		});
 	},
-	
+
+    /**
+     * Join a slideshow
+     * @param {String} key
+     * @param {Function} onGoTo
+     * @param {Function} onSetup
+     */
 	joinSlideshow : function(key, onGoTo, onSetup) {
 		PresenchaMsg.key = key;
 		PresenchaMsg._onMsg = onGoTo;
@@ -73,16 +88,32 @@ Ext.define('PresenchaMsg', {
         	if(onSetup) callback(onSetup);
 		});
 	},
-	
+
+    /**
+     * Get the URL for a slide
+     * @param {String} url
+     * @return {String}
+     */
 	getSlideUrl : function(url) {
 		var n = Math.ceil(Math.random() * 3);
 		return 'http://src.sencha.io/' + url;
 	},
-	
+
+    /**
+     * End the slide show
+     * @param {Function} callback
+     * @param {Object} scope
+     */
 	stopSlideshow : function(callback, scope) {
 		PresenchaMsg.queue.unsubscribe(callback, scope);
 	},
-	
+
+    /**
+     * Handle a message
+     * @private
+     * @param {String} from
+     * @param {String} message
+     */
 	_onMsg : function(from, message) {
 		alert(JSON.stringify(message));
 	}

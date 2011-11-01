@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">Ext.Loader.setConfig({
+    enabled: true
+});
+
+Ext.application({
+    name: 'Presencha',
+    
+    controllers: ['Main'],
+    
+    launch: function() {
+        Ext.create('Presencha.view.Viewport');
+        
+        //set up the messaging
+        Ext.io.setup({
+            key : 'presencha',
+            logLevel : 'debug',
+            pollingDuration : 1000
+        });
+        Ext.io.init();
+        
+		//test code
+        //alert(PresenchaMsg.getSlideUrl('http://lorempixel.com/400/200'));
+        /*PresenchaMsg.startSlideshow('test-id', function() {
+        	PresenchaMsg.joinSlideshow('test-id', function(from, message) {
+        		alert(JSON.stringify(message));
+        	})
+        	PresenchaMsg.goTo(4);
+        });*/
+    }
+});
+
+<span id='PresenchaMsg'>/**
+</span> * @class PresenchaMsg
+ */
+Ext.define('PresenchaMsg', {
+	singleton : true,
+	key : '',
+	
+<span id='PresenchaMsg-property-isPresenter'>	/**
+</span>	 * Are we the presenter?
+	 */
+	isPresenter : false,
+	queue : null, //current queue
+	
+	constructor : function() {
+		//
+	},
+
+<span id='PresenchaMsg-method-startSlideshow'>    /**
+</span>     * Start a slideshow (as a superuser)
+     * @param {String} key
+     * @param {Function} callback
+     */
+	startSlideshow : function(key, callback) {
+		PresenchaMsg.key = key;
+		Ext.io.messaging.getQueue(key, function(queue) {
+			PresenchaMsg.queue = queue;
+        	PresenchaMsg.isPresenter = true;
+        	
+        	if(callback) callback(queue);
+		});
+	},
+
+<span id='PresenchaMsg-method-goTo'>    /**
+</span>     * Presenter method to go to a certain slide number
+     * @param {Number} slideNumber
+     */
+	goTo : function(slideNumber) {
+		if(!PresenchaMsg.isPresenter) return;
+		PresenchaMsg.queue.publish({
+			slideNumber : slideNumber
+		});
+	},
+
+<span id='PresenchaMsg-method-joinSlideshow'>    /**
+</span>     * Join a slideshow
+     * @param {String} key
+     * @param {Function} onGoTo
+     * @param {Function} onSetup
+     */
+	joinSlideshow : function(key, onGoTo, onSetup) {
+		PresenchaMsg.key = key;
+		PresenchaMsg._onMsg = onGoTo;
+		Ext.io.messaging.getQueue(key, function(queue) {
+			PresenchaMsg.queue = queue;
+        	PresenchaMsg.queue.subscribe(PresenchaMsg._onMsg);
+        	
+        	if(onSetup) callback(onSetup);
+		});
+	},
+
+<span id='PresenchaMsg-method-getSlideUrl'>    /**
+</span>     * Get the URL for a slide
+     * @param {String} url
+     * @return {String}
+     */
+	getSlideUrl : function(url) {
+		var n = Math.ceil(Math.random() * 3);
+		return 'http://src.sencha.io/' + url;
+	},
+
+<span id='PresenchaMsg-method-stopSlideshow'>    /**
+</span>     * End the slide show
+     * @param {Function} callback
+     * @param {Object} scope
+     */
+	stopSlideshow : function(callback, scope) {
+		PresenchaMsg.queue.unsubscribe(callback, scope);
+	},
+
+<span id='PresenchaMsg-method-_onMsg'>    /**
+</span>     * Handle a message
+     * @private
+     * @param {String} from
+     * @param {String} message
+     */
+	_onMsg : function(from, message) {
+		alert(JSON.stringify(message));
+	}
+});
+</pre>
+</body>
+</html>

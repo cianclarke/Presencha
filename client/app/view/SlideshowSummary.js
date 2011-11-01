@@ -1,3 +1,8 @@
+/**
+ * @class Presencha.view.SlideshowSummary
+ *
+ * Summary of the slideshow links
+ */
 Ext.define('Presencha.view.SlideshowSummary', {
     extend: 'Ext.Panel',
     xtype: 'slideshowsummary',

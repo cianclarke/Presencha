@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='Presencha-view-PresoForm'>/**
+</span> * @class Presencha.view.PresoForm
+ *
+ * Presentation upload form
+ */
+Ext.define('Presencha.view.PresoForm', {
+    extend: 'Ext.Panel',
+    xtype: 'presoform',
+    config: {
+        layout: 'fit',
+        items: [
+            {
+                xtype: 'panel',
+                html: '&lt;img class=&quot;vector&quot; src=&quot;resources/images/logo.png&quot;&gt;',
+                cls: 'mascott'
+            },
+            {
+                xtype: 'toolbar',
+                title: 'Upload your slideshow',
+                docked: 'top'
+            },
+            {
+                xtype: 'formpanel',
+                cls: 'upload',
+                items: [
+                    {
+                        xtype: 'fieldset',
+                        items: [
+                            {
+                                xtype: 'textfield',
+                                label: 'Title',
+                                name: 'title'
+                            },
+                            {
+                                xtype: 'fileuploadfield',
+                                label: 'PDF',
+                                name: 'slideshow'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                xtype: 'toolbar',
+                docked: 'bottom',
+                items: [
+                    { xtype: 'spacer' },
+                    {
+                        text: 'submit',
+                        cls: 'green',
+                        id: 'presentationUploadButton'
+                    },
+                    { xtype: 'spacer' }
+                ] 
+            }
+        ]
+    }
+});
+</pre>
+</body>
+</html>
