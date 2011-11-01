@@ -15,9 +15,42 @@ class manager
     {
         return md5(microtime().'presencha');
     }
-
-    public function upload($fileName, $title)
+    
+    protected function validateUpload($field)
     {
+        if (!isset($field['tmp_name'])) {
+            return 'No upload file available';
+        }
+        
+        if ($field['error'] > 0) {
+            return 'Error while uploading';
+        }
+        
+        if (!in_array($field['type'], array('application/pdf', 'application/octet-stream'))) {
+            return 'Please upload a valid pdf file';
+        }
+        
+        $maxSize = (3 * 1024 * 1024);
+        if ($field['size'] > $maxSize) {
+            return 'Max upload size of 3 MB exceeded';
+        }
+        
+        return true;
+    }
+    /**
+     * Upload the pdf
+     *
+     * @param array $field 
+     * @param string $title 
+     * @return void
+     */
+    public function upload($field, $title)
+    {
+        
+        if (($error = $this->validateUpload($field)) !== true) {
+            $this->showError($error);
+        }
+        
         $meta = array();
         $pageCount = $this->getPageCount($fileName);
 
@@ -84,6 +117,13 @@ class manager
 
         return 'slide'. ($page + 1) . '.png';
     }
+    
+    protected function showError($message)
+    {
+        header("HTTP/1.0 404 Not Found");
+        echo $message;
+        exit();
+    }
 }
 
 
@@ -91,7 +131,7 @@ class manager
         
 if (isset($_POST) && !empty($_POST)) {
     $manager = new Manager();
-    echo $manager->upload($_FILES['slideshow']['tmp_name'], $_POST['title']);
+    echo $manager->upload($_FILES['slideshow'], $_POST['title']);
 } else {
     header('Content-type: text/html');
     ?><!doctype html>
