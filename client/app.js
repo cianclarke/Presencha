@@ -2,6 +2,7 @@ Ext.Loader.setConfig({
     enabled: true
 });
 
+
 Ext.application({
     name: 'Presencha',
     
@@ -17,15 +18,6 @@ Ext.application({
             pollingDuration : 1000
         });
         Ext.io.init();
-        
-		//test code
-        //alert(PresenchaMsg.getSlideUrl('http://lorempixel.com/400/200'));
-        /*PresenchaMsg.startSlideshow('test-id', function() {
-        	PresenchaMsg.joinSlideshow('test-id', function(from, message) {
-        		alert(JSON.stringify(message));
-        	})
-        	PresenchaMsg.goTo(4);
-        });*/
     }
 });
 
@@ -34,13 +26,19 @@ Ext.application({
  */
 Ext.define('PresenchaMsg', {
 	singleton : true,
+    /**
+     * Presentation key
+     */
 	key : '',
 	
 	/**
 	 * Are we the presenter?
 	 */
 	isPresenter : false,
-	queue : null, //current queue
+    /**
+     * Current queue
+     */
+	queue : null,
 	
 	constructor : function() {
 		//
