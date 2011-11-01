@@ -1,1 +1,1 @@
-jsduck --title="Presencha" -o ./docs/ ./app/controller/* ./app/model/* ./app/store/* ./app/view/*
+jsduck --title="Presencha" -o ./docs/ app.js ./app/controller/* ./app/model/* ./app/store/* ./app/view/*

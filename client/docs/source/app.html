@@ -1,4 +1,21 @@
-Ext.Loader.setConfig({
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">Ext.Loader.setConfig({
     enabled: true
 });
 
@@ -29,15 +46,15 @@ Ext.application({
     }
 });
 
-/**
- * @class PresenchaMsg
+<span id='PresenchaMsg'>/**
+</span> * @class PresenchaMsg
  */
 Ext.define('PresenchaMsg', {
 	singleton : true,
 	key : '',
 	
-	/**
-	 * Are we the presenter?
+<span id='PresenchaMsg-property-isPresenter'>	/**
+</span>	 * Are we the presenter?
 	 */
 	isPresenter : false,
 	queue : null, //current queue
@@ -46,8 +63,8 @@ Ext.define('PresenchaMsg', {
 		//
 	},
 
-    /**
-     * Start a slideshow (as a superuser)
+<span id='PresenchaMsg-method-startSlideshow'>    /**
+</span>     * Start a slideshow (as a superuser)
      * @param {String} key
      * @param {Function} callback
      */
@@ -61,8 +78,8 @@ Ext.define('PresenchaMsg', {
 		});
 	},
 
-    /**
-     * Presenter method to go to a certain slide number
+<span id='PresenchaMsg-method-goTo'>    /**
+</span>     * Presenter method to go to a certain slide number
      * @param {Number} slideNumber
      */
 	goTo : function(slideNumber) {
@@ -72,8 +89,8 @@ Ext.define('PresenchaMsg', {
 		});
 	},
 
-    /**
-     * Join a slideshow
+<span id='PresenchaMsg-method-joinSlideshow'>    /**
+</span>     * Join a slideshow
      * @param {String} key
      * @param {Function} onGoTo
      * @param {Function} onSetup
@@ -89,8 +106,8 @@ Ext.define('PresenchaMsg', {
 		});
 	},
 
-    /**
-     * Get the URL for a slide
+<span id='PresenchaMsg-method-getSlideUrl'>    /**
+</span>     * Get the URL for a slide
      * @param {String} url
      * @return {String}
      */
@@ -99,8 +116,8 @@ Ext.define('PresenchaMsg', {
 		return 'http://src.sencha.io/' + url;
 	},
 
-    /**
-     * End the slide show
+<span id='PresenchaMsg-method-stopSlideshow'>    /**
+</span>     * End the slide show
      * @param {Function} callback
      * @param {Object} scope
      */
@@ -108,8 +125,8 @@ Ext.define('PresenchaMsg', {
 		PresenchaMsg.queue.unsubscribe(callback, scope);
 	},
 
-    /**
-     * Handle a message
+<span id='PresenchaMsg-method-_onMsg'>    /**
+</span>     * Handle a message
      * @private
      * @param {String} from
      * @param {String} message
@@ -118,3 +135,6 @@ Ext.define('PresenchaMsg', {
 		alert(JSON.stringify(message));
 	}
 });
+</pre>
+</body>
+</html>
