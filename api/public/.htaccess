@@ -1,0 +1,8 @@
+AddDefaultCharset utf-8
+
+Header set Access-Control-Allow-Methods: "GET, POST, OPTIONS"
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Headers "X-Requested-With, Content-Type, Content-Length"
+Header set Access-Control-Max-Age "86400"
+
+SetEnv APPLICATION_ENV development
