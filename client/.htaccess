@@ -1,6 +1,6 @@
 AddDefaultCharset utf-8
 RewriteEngine on
 
-RewriteRule ^deck/(\w+)/(\w+)$ /touch.html?key=$1&secretKey=$2 [R,L,QSA]
-RewriteRule ^deck/(\w+)$ /touch.html?key=$1 [R,L,QSA]
-RewriteRule ^deck/*$ /upload.php [L,QSA]
+RewriteRule ^(\w+)/(\w+)$ /touch.html?key=$1&secretKey=$2 [L,QSA]
+RewriteRule ^upload/*$ /upload.php [L,QSA]
+RewriteRule ^(\w+)$ /touch.html?key=$1 [L,QSA]

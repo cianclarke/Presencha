@@ -1,10 +1,10 @@
 Ext.Loader.setConfig({
-    enabled: true
+    enabled: true,
 });
-
 
 Ext.application({
     name: 'Presencha',
+	appFolder: '/app',
     
     controllers: ['Main'],
     

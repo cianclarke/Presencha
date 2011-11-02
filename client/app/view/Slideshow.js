@@ -19,7 +19,6 @@ Ext.define('Presencha.view.Slideshow', {
     		//signal clients to go to the next slide
     		var slideNum = carousel.getItems().indexOf(value);
     		PresenchaMsg.goTo(slideNum);
-//    		debugger;
     	});
     	PresenchaMsg.carousel = this;
     }

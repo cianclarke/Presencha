@@ -1,7 +1,7 @@
 UI URL Endpoints:
 
-http://presencha.com/deck  -- Upload a PDF to create a slideshow
+http://presencha.com/upload -- Upload a PDF to create a slideshow
 
-http://presencha.com/deck/<key> -- Slideshow Viewer client
+http://presencha.com/<key> -- Slideshow Viewer client
 
-http://presencha.com/deck/<key>/<secretKey> -- Slideshow controller client
+http://presencha.com/<key>/<secretKey> -- Slideshow controller client
