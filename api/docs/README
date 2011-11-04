@@ -1,3 +1,5 @@
+Copyright 2011 Cian Clarke, Martin de Keijzer , Peter Fry, Martijn De Letter, Matthijs van den Bos, Paul Godfrey, all rights reserved.
+
 URL Endpoints:
 
 POST http://api.presencha.com/slideshow -- create a new slideshow
